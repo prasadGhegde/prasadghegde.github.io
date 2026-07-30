@@ -191,7 +191,7 @@
   .review-card__byline span{ color:var(--text-dim); font-size:.6rem; }
   .review-card__action{ border-left:1px solid var(--panel-border); padding:2rem; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:1.2rem; }
   .review-card__action p{ font-size:.84rem; font-weight:300; line-height:1.65; color:var(--text-dim); }
-  .review-pdf{ width:min(1100px,94vw); height:min(88vh,900px); padding:0; border:1px solid var(--panel-border); background:var(--bg-2); color:var(--text); overflow:hidden; }
+  .review-pdf{ position:fixed; inset:50% auto auto 50%; width:min(760px,94vw); height:min(92vh,980px); margin:0; padding:0; transform:translate(-50%,-50%); border:1px solid var(--panel-border); background:var(--bg-2); color:var(--text); overflow:hidden; }
   .review-pdf::backdrop{ background:rgba(5,8,12,.88); backdrop-filter:blur(5px); }
   .review-pdf__bar{ height:58px; padding:0 1rem 0 1.2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; border-bottom:1px solid var(--panel-border); font-family:var(--mono); }
   .review-pdf__title{ min-width:0; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
@@ -230,7 +230,7 @@
     .review{ padding-top:4rem; padding-bottom:4rem; }
     .review-card__meta{ align-items:flex-start; flex-direction:column; }
     .review-card blockquote, .review-card__action{ padding:1.5rem; }
-    .review-pdf{ width:96vw; height:90vh; }
+    .review-pdf{ width:94vw; height:90vh; }
     .review-pdf__bar{ height:auto; min-height:58px; padding:.65rem .8rem; }
     .review-pdf__title{ display:none; }
     .review-pdf iframe{ height:calc(100% - 58px); }
@@ -621,7 +621,7 @@
     .review-card blockquote, .review-card__action{ padding:1.35rem; }
     .review-card__quote{ font-size:1.08rem; line-height:1.55; }
     .review-card__action .btn{ width:100%; }
-    .review-pdf{ width:100vw; max-width:none; height:100svh; height:100dvh; max-height:none; border:0; }
+    .review-pdf{ width:calc(100vw - 1.5rem); max-width:760px; height:calc(100svh - 1.5rem); height:calc(100dvh - 1.5rem); max-height:980px; }
     .review-pdf__bar{ padding:max(.65rem,env(safe-area-inset-top)) max(.75rem,env(safe-area-inset-right)) .65rem max(.75rem,env(safe-area-inset-left)); }
     .review-pdf__actions{ width:100%; }
     .review-pdf__actions .btn{ min-height:44px; flex:1; display:grid; place-items:center; text-align:center; }
@@ -1268,11 +1268,10 @@
   <div class="review-pdf__bar">
     <div class="review-pdf__title" id="review-pdf-title"><span>REFERENCE // 01</span>Letter of Recommendation · Alexander Kuhn</div>
     <div class="review-pdf__actions">
-      <a class="btn" href="LOR_Alexander%20Kuhn.pdf" target="_blank" rel="noopener">Open separately</a>
       <button class="btn btn--accent" id="review-pdf-close" type="button">Close</button>
     </div>
   </div>
-  <iframe title="Letter of Recommendation from Alexander Kuhn" data-src="LOR_Alexander%20Kuhn.pdf#view=FitH"></iframe>
+  <iframe title="Letter of Recommendation from Alexander Kuhn" data-src="LOR_Alexander%20Kuhn.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;pagemode=none&amp;view=FitH"></iframe>
 </dialog>
 
 <div id="toasts"></div>
