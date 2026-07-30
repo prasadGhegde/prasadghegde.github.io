@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Ambaprasad Ganapathi Hegde — Virtual Commissioning & Digital Twins</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -271,7 +271,7 @@
   <button class="fs-exit" id="fs-exit">✕ COLLAPSE</button>
   <div class="hero__content">
     <p class="eyebrow"><span class="dot"></span>Munich, Germany</p>
-    <h1 class="hero__name">Ambaprasad Ganapathi<br>Hegde</h1>
+    <h1 class="hero__name">Ambaprasad&nbsp;Ganapathi<br>Hegde</h1>
     <p class="hero__title">Virtual Commissioning<span class="dash">/</span>Digital Twins</p>
     <p class="hero__tagline">Specialist in <span class="hl">virtual commissioning and digital twins</span> — I build production lines in software before they exist in steel. PLC test automation, plant simulation and AI-assisted validation for <span class="hl">Industry 4.0 manufacturing</span>: proving the plant runs perfectly before the first bolt is tightened.</p>
   </div>
@@ -490,6 +490,185 @@
     .ds-grid{ grid-template-columns:1fr; }
     .deploy-flex{ flex-direction:column; }
     .deploy-list{ width:100%; }
+  }
+
+  /* ---- phone profile: additive overrides only ---- */
+  @media (max-width:700px), (max-width:920px) and (max-height:600px) and (pointer:coarse){
+    html{ scroll-padding-top:1rem; }
+    body{ -webkit-text-size-adjust:100%; }
+    section{ padding:4.25rem 1.2rem; }
+    .grain{ opacity:.035; }
+    .eyebrow{ margin-bottom:.75rem; font-size:.58rem; line-height:1.6; letter-spacing:.14em; }
+    .section-title{ margin-bottom:1.5rem; font-size:clamp(1.8rem,9vw,2.35rem); }
+    .btn, .tab-btn, .hmi-btn{ min-height:44px; }
+
+    #boot .boot-box{ width:calc(100% - 2.4rem); min-width:0; font-size:.67rem; line-height:1.5; }
+    #mode-toggle{
+      top:auto;
+      right:max(.75rem,env(safe-area-inset-right));
+      bottom:max(.75rem,env(safe-area-inset-bottom));
+      max-width:calc(100vw - 1.5rem);
+      padding:.5rem .65rem;
+      gap:.45rem;
+      font-size:.52rem;
+      background:rgba(13,17,23,.92);
+    }
+    #mode-toggle .fs-btn{ min-width:44px; min-height:44px; margin-left:.25rem; padding-left:.55rem; display:grid; place-items:center; }
+
+    .hero{ height:auto; min-height:100svh; min-height:100dvh; }
+    .hero__content{ width:100%; height:auto; min-height:100svh; min-height:100dvh; max-width:none; padding:5.5rem 1.2rem 6.5rem; justify-content:center; }
+    .hero__name{ font-size:clamp(1.25rem,7.8vw,2.5rem); line-height:1.08; }
+    .hero__title{ margin-top:.9rem; font-size:clamp(.78rem,4vw,.98rem); line-height:1.6; }
+    .hero__tagline{ margin-top:1.1rem; padding:.9rem 1rem; font-size:.9rem; line-height:1.6; }
+    .hud--tl{ top:1rem; left:1.2rem; max-width:calc(100% - 2.4rem); font-size:.52rem; line-height:1.5; }
+    .hud--bl, .hud--br{ display:none; }
+    .hero__scroll{ left:1.2rem; bottom:1.2rem; font-size:.58rem; }
+    .hero__scroll span{ height:22px; }
+    .hero-zoom{ right:1rem; bottom:4.7rem; }
+    .hero-zoom button{ min-height:44px; }
+    .fs-exit{ top:max(.75rem,env(safe-area-inset-top)); right:max(.75rem,env(safe-area-inset-right)); min-height:44px; }
+    body.hero-fs .hero{ height:100svh; height:100dvh; min-height:0; }
+
+    .hmi{ padding:.75rem; }
+    .hmi__row{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.45rem; }
+    .hmi__row .hmi-btn{ min-width:0; padding:.6rem .25rem; font-size:.56rem; letter-spacing:.06em; }
+    .hmi__lamps{ justify-content:space-between; flex-wrap:wrap; gap:.65rem 1rem; }
+    .twin-frame{ padding:.65rem; gap:.75rem; overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; }
+    .twin-frame::before, .proj__viz::before{
+      content:'SWIPE DIAGRAM HORIZONTALLY';
+      position:sticky;
+      left:0;
+      z-index:2;
+      width:max-content;
+      padding:.25rem .45rem;
+      border:1px solid var(--panel-border);
+      background:rgba(13,17,23,.92);
+      font-family:var(--mono);
+      font-size:.52rem;
+      letter-spacing:.1em;
+      color:var(--text-dim);
+    }
+    #twin-svg{ min-width:620px; align-self:flex-start; touch-action:pan-x; }
+    .twin-dash{ font-size:.62rem; }
+    .twin-caption{ font-size:.61rem; letter-spacing:.06em; }
+    .dt-explainer, .deploy-note, .proj__info p, .sfield .sf-v{ text-align:left; text-justify:auto; hyphens:none; -webkit-hyphens:none; }
+    .dt-explainer{ margin-top:2rem; font-size:.9rem; line-height:1.7; }
+    .mirror-copy{ gap:1rem; margin-top:2rem; }
+    .mirror-box{ padding:1.3rem; }
+    .log-line{ margin-top:2rem; padding-left:1rem; font-size:.78rem; line-height:1.7; }
+
+    .ds-card{ padding:1.2rem; }
+    .ds-card h3{ margin-bottom:.9rem; font-size:1rem; }
+    .ds-row{ flex-direction:column; gap:.25rem; padding:.7rem 0; }
+    .ds-k{ width:auto; padding-top:0; font-size:.58rem; }
+    .ds-v{ font-size:.8rem; }
+    .changelog-mini{ padding:.75rem; font-size:.62rem; line-height:1.75; }
+    .changelog-mini summary{ min-height:44px; display:flex; align-items:center; line-height:1.5; }
+
+    .deploy-map{ padding:.55rem; }
+    #globe-canvas{ touch-action:pan-y; }
+    .globe-hint{ min-height:2rem; display:flex; align-items:center; justify-content:center; font-size:0; line-height:1.5; }
+    .globe-hint::after{ content:'SWIPE HORIZONTALLY TO SPIN · SITES PULSING'; font-size:.54rem; }
+    .deploy-list{ gap:.7rem; }
+    .site{ padding:.85rem 1rem; }
+    .deploy-note{ margin-top:1.3rem; font-size:.88rem; line-height:1.7; }
+
+    .station{ margin-bottom:.85rem; }
+    .station__head{
+      min-height:72px;
+      padding:.85rem;
+      display:grid;
+      grid-template-columns:38px auto 1fr auto;
+      grid-template-rows:auto auto;
+      gap:.5rem .65rem;
+      align-items:center;
+    }
+    .st-badge{ grid-column:1; grid-row:1/3; }
+    .station__num{ grid-column:2; grid-row:1; font-size:.55rem; }
+    .station__dates{ grid-column:3; grid-row:1; justify-self:end; font-size:.54rem; white-space:nowrap; }
+    .station__chev{ grid-column:4; grid-row:1; }
+    .station__role{ grid-column:2/5; grid-row:2; font-size:.95rem; line-height:1.35; }
+    .station__role span{ display:block; margin-top:.15rem; font-size:.68rem; }
+    .station__body{ padding:0 .85rem .85rem; }
+    .st-grid{ gap:.65rem; }
+    .station .sfield{ padding:.85rem; }
+    .st-impact{ padding:.75rem .85rem; gap:.45rem; }
+    .st-impact .imp-k, .st-impact .imp-v{ width:100%; }
+    .st-learned{ font-size:.66rem; }
+
+    .knowledge__grid{ gap:2rem; }
+    .skills__group{ margin-bottom:1.25rem; }
+    .edu-card{ padding:1.2rem; margin-bottom:1rem; }
+    .tag{ font-size:.65rem; }
+
+    .proj, .proj:nth-child(even of .proj){ margin-bottom:2rem; padding:1rem; gap:1.4rem; }
+    .proj__info{ order:1; min-width:0; }
+    .proj__viz{ order:2; min-height:0; padding:.6rem; overflow-x:auto; overscroll-behavior-x:contain; align-items:flex-start !important; justify-content:flex-start !important; scrollbar-width:thin; }
+    .proj__viz > svg{ width:auto; min-width:540px; height:auto; flex:none; touch-action:pan-x; }
+    .proj__info .mod{ margin-bottom:.75rem; font-size:.56rem; line-height:1.5; letter-spacing:.1em; }
+    .proj__info h3{ margin-bottom:.85rem; font-size:1.25rem; line-height:1.3; }
+    .proj__info p{ font-size:.87rem; line-height:1.65; }
+    .tabs{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.35rem; }
+    .tab-btn{ padding:.55rem .25rem; font-size:.54rem; letter-spacing:.06em; }
+    .metric-row{ gap:1.25rem; flex-wrap:wrap; }
+    .metric b{ font-size:1.45rem; }
+    .proj__tags{ gap:.4rem; margin-top:1rem; }
+    .viz-bar{ width:100%; flex-direction:column; align-items:stretch; gap:.65rem; }
+    .viz-bar .btn{ width:100%; }
+    .viz-status{ font-size:.55rem; line-height:1.5; }
+    #a-collision .viz-bar > div{ width:100%; display:grid !important; grid-template-columns:1fr 1fr; gap:.45rem !important; }
+
+    .review-card blockquote, .review-card__action{ padding:1.35rem; }
+    .review-card__quote{ font-size:1.08rem; line-height:1.55; }
+    .review-card__action .btn{ width:100%; }
+    .review-pdf{ width:100vw; max-width:none; height:100svh; height:100dvh; max-height:none; border:0; }
+    .review-pdf__bar{ padding:max(.65rem,env(safe-area-inset-top)) max(.75rem,env(safe-area-inset-right)) .65rem max(.75rem,env(safe-area-inset-left)); }
+    .review-pdf__actions{ width:100%; }
+    .review-pdf__actions .btn{ min-height:44px; flex:1; display:grid; place-items:center; text-align:center; }
+
+    .contact{ padding:4rem 1.2rem calc(5.5rem + env(safe-area-inset-bottom)); }
+    .contact__email{ width:100%; text-align:center; }
+    .contact__links{ display:grid; grid-template-columns:1fr 1fr; gap:.5rem; width:100%; }
+    .contact__links a{ min-height:44px; display:flex; align-items:center; justify-content:center; border:1px solid var(--panel-border); padding:.55rem; text-align:center; }
+    .contact__links #gen-tc{ grid-column:1/-1; }
+    .contact .eggs{ width:100%; line-height:1.75; }
+    .eggs summary{ min-height:44px; display:flex; align-items:center; line-height:1.5; }
+    .build-tag{ line-height:1.6; }
+
+    #toasts, #alerts{
+      left:max(.75rem,env(safe-area-inset-left));
+      right:max(.75rem,env(safe-area-inset-right));
+      width:auto;
+      max-width:none;
+      align-items:stretch;
+    }
+    #toasts{ bottom:calc(4.75rem + env(safe-area-inset-bottom)); }
+    #alerts{ top:max(.75rem,env(safe-area-inset-top)); }
+    .toast{ width:100%; font-size:.66rem; }
+    .toast .t-actions{ flex-wrap:wrap; }
+    .toast .t-actions .btn{ flex:1; min-width:120px; }
+    #stack-modal{ padding:max(1rem,env(safe-area-inset-top)) max(1rem,env(safe-area-inset-right)) max(1rem,env(safe-area-inset-bottom)) max(1rem,env(safe-area-inset-left)); }
+    #stack-modal .sm-box{ width:100%; max-height:100%; overflow:auto; padding:1.25rem; font-size:.66rem; }
+  }
+
+  @media (max-width:920px) and (max-height:600px) and (pointer:coarse){
+    section{ padding-top:3.5rem; padding-bottom:3.5rem; }
+    .hero{ min-height:480px; }
+    .hero__content{ max-width:68%; min-height:480px; padding:3.5rem 1.5rem 3rem; }
+    .hero .eyebrow{ margin-bottom:.4rem; }
+    .hero__name{ font-size:clamp(1.85rem,5.5vw,2.7rem); }
+    .hero__title{ margin-top:.55rem; font-size:.72rem; }
+    .hero__tagline{ margin-top:.65rem; padding:.65rem .8rem; font-size:.74rem; line-height:1.45; }
+    .hero__scroll{ display:none; }
+    .hud--tl{ left:1.5rem; }
+    #mode-toggle{ top:max(.75rem,env(safe-area-inset-top)); bottom:auto; }
+  }
+
+  @media (max-width:700px) and (prefers-reduced-motion:reduce),
+         (max-width:920px) and (max-height:600px) and (pointer:coarse) and (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .dot, .belt-rail .pallet{ animation:none; }
   }
 </style>
 
@@ -1189,11 +1368,12 @@ document.querySelectorAll('.station__head').forEach(h=>{
 (function(){
   const canvas=document.getElementById('factory-canvas');
   const hero=document.getElementById('hero');
+  const phoneProfile=window.matchMedia('(max-width:700px), (max-width:920px) and (max-height:600px) and (pointer:coarse)').matches;
   let W=hero.clientWidth,H=hero.clientHeight;
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(40,W/H,.1,140);
-  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
-  renderer.setSize(W,H);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:!phoneProfile});
+  renderer.setSize(W,H);renderer.setPixelRatio(Math.min(devicePixelRatio,phoneProfile?1.25:2));
   renderer.shadowMap.enabled=true;
   renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   scene.add(new THREE.AmbientLight(0x8b95a1,.42));
@@ -1202,7 +1382,7 @@ document.querySelectorAll('.station__head').forEach(h=>{
   const fill=new THREE.PointLight(0x8b95a1,.3,60);fill.position.set(0,4,-10);scene.add(fill);
   const sun=new THREE.DirectionalLight(0xf2c98a,.85);
   sun.position.set(10,15,8);sun.castShadow=true;
-  sun.shadow.mapSize.set(1024,1024);
+  sun.shadow.mapSize.set(phoneProfile?512:1024,phoneProfile?512:1024);
   sun.shadow.camera.left=-14;sun.shadow.camera.right=14;
   sun.shadow.camera.top=14;sun.shadow.camera.bottom=-14;
   sun.shadow.camera.near=2;sun.shadow.camera.far=45;
@@ -1900,10 +2080,18 @@ document.querySelectorAll('.station__head').forEach(h=>{
   }
 
   // ---- animate ----
-  let mix=0,t=0,last=performance.now();
+  let mix=0,t=0,last=performance.now(),phoneLastFrame=0,phoneRenderVisible=true;
+  if(phoneProfile){
+    new IntersectionObserver(([entry])=>{phoneRenderVisible=entry.isIntersecting;},{rootMargin:'120px'}).observe(hero);
+  }
   const hud=document.getElementById('hud-mode');
   function anim(now){
     requestAnimationFrame(anim);
+    if(phoneProfile){
+      if(!phoneRenderVisible||document.hidden){last=now;return;}
+      if(now-phoneLastFrame<33)return;
+      phoneLastFrame=now;
+    }
     const dt=Math.min((now-last)/1000,.05);last=now;t+=dt;
     const isPhys=document.body.classList.contains('mode-physical');
     mix+=((isPhys?1:0)-mix)*.05;
@@ -2626,6 +2814,7 @@ function genTestCase(){
   const holder=document.getElementById('globe-holder');
   const canvas=document.getElementById('globe-canvas');
   if(!holder||!canvas||typeof THREE==='undefined')return;
+  const phoneProfile=window.matchMedia('(max-width:700px), (max-width:920px) and (max-height:600px) and (pointer:coarse)').matches;
 const EARTH_RINGS=[
 [[-59.57,-80.04],[-59.87,-80.55],[-60.16,-81.00],[-62.25,-80.86],[-64.49,-80.92],[-65.74,-80.59],[-65.74,-80.55],[-66.29,-80.25],[-64.04,-80.29],[-61.88,-80.39],[-61.14,-79.98],[-60.61,-79.63],[-59.57,-80.04]],
 [[-159.21,-79.50],[-161.13,-79.63],[-162.44,-79.28],[-163.03,-78.93],[-163.06,-78.87],[-163.71,-78.59],[-163.10,-78.22],[-161.24,-78.38],[-160.25,-78.69],[-159.48,-79.05],[-159.21,-79.50]],
@@ -2758,14 +2947,15 @@ const EARTH_RINGS=[
 ];
 
   const R=2;
-  let W=holder.clientWidth,H=460;
+  const globeHeight=()=>phoneProfile?Math.max(260,Math.min(340,innerHeight*.55)):460;
+  let W=holder.clientWidth,H=globeHeight();
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(38,W/H,.1,60);
   let dist=5.9,distT=5.9;
   const DMIN=3.3,DMAX=9.5;
   camera.position.set(0,0.5,dist);camera.lookAt(0,0,0);
-  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
-  renderer.setSize(W,H);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:!phoneProfile});
+  renderer.setSize(W,H);renderer.setPixelRatio(Math.min(devicePixelRatio,phoneProfile?1.25:2));
   const globe=new THREE.Group();scene.add(globe);
 
   function toVec(lat,lon,r){
@@ -2776,7 +2966,7 @@ const EARTH_RINGS=[
   // ---- solid land texture drawn from real Natural Earth coastline data ----
   // (public domain, 1:110m scale -- accurate continent shapes, not hand-approximated)
   const tex=(function(){
-    const TW=4096,TH=2048;
+    const TW=phoneProfile?2048:4096,TH=phoneProfile?1024:2048;
     const c=document.createElement('canvas');c.width=TW;c.height=TH;
     const x=c.getContext('2d');
     // ocean: soft vertical gradient for a bit of depth instead of flat colour
@@ -2820,9 +3010,9 @@ const EARTH_RINGS=[
   const globeSun=new THREE.DirectionalLight(0xfff2df,1.15);
   globeSun.position.set(-3,2,4);scene.add(globeSun);
   scene.add(new THREE.AmbientLight(0x384a5c,1.1));
-  globe.add(new THREE.Mesh(new THREE.SphereGeometry(R,96,72),
+  globe.add(new THREE.Mesh(new THREE.SphereGeometry(R,phoneProfile?64:96,phoneProfile?48:72),
     new THREE.MeshStandardMaterial({map:tex,roughness:.85,metalness:.05})));
-  globe.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.002,36,24),
+  globe.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.002,phoneProfile?24:36,phoneProfile?16:24),
     new THREE.MeshBasicMaterial({color:0x5ee6d0,wireframe:true,transparent:true,opacity:.025})));
   // soft atmospheric rim glow
   const rimMat=new THREE.ShaderMaterial({
@@ -2838,7 +3028,7 @@ const EARTH_RINGS=[
     }`,
     transparent:true, blending:THREE.AdditiveBlending, side:THREE.BackSide, depthWrite:false
   });
-  globe.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.035,48,36), rimMat));
+  globe.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.035,phoneProfile?32:48,phoneProfile?24:36), rimMat));
 
   // ---- sites (Munich = home base) ----
   const SITES=[
@@ -2921,9 +3111,17 @@ const EARTH_RINGS=[
   canvas.addEventListener('dblclick',()=>{distT=distT>4.5?3.6:5.9;});
 
   const wp=new THREE.Vector3();
-  let t=0,last=performance.now();
+  let t=0,last=performance.now(),phoneLastFrame=0,phoneRenderVisible=true;
+  if(phoneProfile){
+    new IntersectionObserver(([entry])=>{phoneRenderVisible=entry.isIntersecting;},{rootMargin:'120px'}).observe(holder);
+  }
   function anim(now){
     requestAnimationFrame(anim);
+    if(phoneProfile){
+      if(!phoneRenderVisible||document.hidden){last=now;return;}
+      if(now-phoneLastFrame<33)return;
+      phoneLastFrame=now;
+    }
     const dt=Math.min((now-last)/1000,.05);last=now;t+=dt;
     if(auto&&!dragging)globe.rotation.y+=dt*.1;
     dist+=(distT-dist)*.08;
@@ -2941,7 +3139,7 @@ const EARTH_RINGS=[
   }
   requestAnimationFrame(anim);
   window.addEventListener('resize',()=>{
-    W=holder.clientWidth;
+    W=holder.clientWidth;H=globeHeight();
     camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);
   });
 })();
