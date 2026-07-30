@@ -181,14 +181,35 @@
   .edu-card h3{ font-family:var(--display); font-size:1.1rem; margin-top:.5rem; }
   .edu-card p.desc{ font-size:.86rem; font-weight:300; color:var(--text-dim); margin-top:.5rem; line-height:1.6; }
 
-  .contact{ background:var(--bg); }
-  .contact .section-title{ max-width:18ch; }
+  .review{ background:var(--bg-2); padding-top:5rem; padding-bottom:5rem; }
+  .review-card{ max-width:1180px; display:grid; grid-template-columns:minmax(0,1.65fr) minmax(240px,.65fr); border:1px solid var(--panel-border); border-top:2px solid var(--accent); background:linear-gradient(135deg,rgba(94,230,208,.045),transparent 45%),var(--bg); transition:border-color .3s; }
+  .review-card__meta{ grid-column:1/-1; display:flex; justify-content:space-between; gap:1rem; padding:.7rem 1rem; border-bottom:1px solid var(--panel-border); font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim); }
+  .review-card__meta span:first-child{ color:var(--accent); }
+  .review-card blockquote{ padding:2.2rem 2.4rem; }
+  .review-card__quote{ font-family:var(--display); font-size:clamp(1.15rem,2vw,1.55rem); font-weight:500; line-height:1.55; color:var(--text); }
+  .review-card__byline{ display:flex; flex-direction:column; gap:.2rem; margin-top:1.5rem; font-family:var(--mono); font-size:.72rem; font-style:normal; letter-spacing:.08em; color:var(--accent); text-transform:uppercase; }
+  .review-card__byline span{ color:var(--text-dim); font-size:.6rem; }
+  .review-card__action{ border-left:1px solid var(--panel-border); padding:2rem; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:1.2rem; }
+  .review-card__action p{ font-size:.84rem; font-weight:300; line-height:1.65; color:var(--text-dim); }
+  .review-pdf{ width:min(1100px,94vw); height:min(88vh,900px); padding:0; border:1px solid var(--panel-border); background:var(--bg-2); color:var(--text); overflow:hidden; }
+  .review-pdf::backdrop{ background:rgba(5,8,12,.88); backdrop-filter:blur(5px); }
+  .review-pdf__bar{ height:58px; padding:0 1rem 0 1.2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; border-bottom:1px solid var(--panel-border); font-family:var(--mono); }
+  .review-pdf__title{ min-width:0; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .review-pdf__title span{ color:var(--accent); margin-right:.65rem; }
+  .review-pdf__actions{ display:flex; align-items:center; gap:.6rem; flex:none; }
+  .review-pdf__actions .btn{ text-decoration:none; padding:.45rem .7rem; font-size:.58rem; }
+  .review-pdf iframe{ display:block; width:100%; height:calc(100% - 58px); border:0; background:#fff; }
+
+  .contact{ background:var(--bg); padding:4rem 8% 2.5rem; display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:4rem; align-items:end; }
+  .contact .eyebrow{ grid-column:1/-1; margin-bottom:.7rem; }
+  .contact .section-title{ grid-column:1/-1; max-width:18ch; margin-bottom:1.5rem; }
   .contact__email{ display:inline-block; font-family:var(--mono); font-size:1.05rem; border:1px solid var(--accent); color:var(--accent); padding:.9rem 1.6rem; text-decoration:none; transition:background .2s, color .2s, border-color .3s; }
   .contact__email:hover{ background:var(--accent); color:var(--bg); }
-  .contact__links{ margin-top:2.8rem; display:flex; gap:2rem; font-family:var(--mono); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); }
+  .contact__links{ display:flex; flex-wrap:wrap; gap:1rem 2rem; align-self:center; font-family:var(--mono); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); }
   .contact__links a{ text-decoration:none; transition:color .2s; }
   .contact__links a:hover{ color:var(--accent); }
-  .build-tag{ display:inline-block; margin-top:3.5rem; font-family:var(--mono); font-size:.65rem; color:var(--text-dim); letter-spacing:.1em; }
+  .contact .eggs{ margin-top:2.2rem; }
+  .build-tag{ justify-self:end; margin-top:2.2rem; font-family:var(--mono); font-size:.65rem; color:var(--text-dim); letter-spacing:.1em; }
 
   @media (max-width:980px){
     .twin-frame{ flex-direction:column; }
@@ -198,7 +219,25 @@
     .proj, .proj:nth-child(even of .proj){ grid-template-columns:1fr; }
     .mirror-copy{ grid-template-columns:1fr; }
     .knowledge__grid{ grid-template-columns:1fr; }
+    .review-card{ grid-template-columns:1fr; }
+    .review-card__action{ border-left:0; border-top:1px solid var(--panel-border); }
+    .contact{ grid-template-columns:1fr; }
+    .contact__links{ margin-top:1.5rem; }
+    .build-tag{ justify-self:start; margin-top:1.4rem; }
     #mode-toggle{ top:auto; bottom:1rem; right:1rem; }
+  }
+  @media (max-width:700px){
+    .review{ padding-top:4rem; padding-bottom:4rem; }
+    .review-card__meta{ align-items:flex-start; flex-direction:column; }
+    .review-card blockquote, .review-card__action{ padding:1.5rem; }
+    .review-pdf{ width:96vw; height:90vh; }
+    .review-pdf__bar{ height:auto; min-height:58px; padding:.65rem .8rem; }
+    .review-pdf__title{ display:none; }
+    .review-pdf iframe{ height:calc(100% - 58px); }
+    .contact{ padding:3.5rem 8% 2rem; }
+    .contact__email{ justify-self:start; max-width:100%; padding:.8rem 1rem; font-size:clamp(.78rem,3.4vw,1rem); overflow-wrap:anywhere; }
+    .contact__links{ gap:.8rem 1.4rem; }
+    .contact .eggs{ margin-top:2rem; }
   }
 </style>
 </head>
@@ -232,7 +271,7 @@
   <button class="fs-exit" id="fs-exit">✕ COLLAPSE</button>
   <div class="hero__content">
     <p class="eyebrow"><span class="dot"></span>Munich, Germany</p>
-    <h1 class="hero__name">Ambaprasad<br>Ganapathi Hegde</h1>
+    <h1 class="hero__name">Ambaprasad Ganapathi<br>Hegde</h1>
     <p class="hero__title">Virtual Commissioning<span class="dash">/</span>Digital Twins</p>
     <p class="hero__tagline">Specialist in <span class="hl">virtual commissioning and digital twins</span> — I build production lines in software before they exist in steel. PLC test automation, plant simulation and AI-assisted validation for <span class="hl">Industry 4.0 manufacturing</span>: proving the plant runs perfectly before the first bolt is tightened.</p>
   </div>
@@ -1001,7 +1040,29 @@
   </article>
 </section>
 
-<footer class="contact" id="contact" style="padding:7rem 8% 10rem;">
+<section class="review" id="review">
+  <p class="eyebrow reveal">// Review</p>
+  <h2 class="section-title reveal">Trusted in the field</h2>
+  <article class="review-card reveal">
+    <div class="review-card__meta">
+      <span>COLLEAGUE REFERENCE</span>
+      <span>BMW GROUP · MUNICH</span>
+    </div>
+    <blockquote cite="LOR_Alexander%20Kuhn.pdf">
+      <p class="review-card__quote">&ldquo;What impressed me most was his ability to take ownership of challenging topics and deliver results with minimal supervision. ... Over time, he developed from an intern into a trusted engineer who could be relied upon for important technical decisions and demanding projects across the world.&rdquo;</p>
+      <cite class="review-card__byline">
+        Alexander Kuhn
+        <span>Colleague · BMW Group</span>
+      </cite>
+    </blockquote>
+    <div class="review-card__action">
+      <p>Read the complete one-page recommendation without leaving the portfolio.</p>
+      <button class="btn btn--accent" id="review-pdf-open" type="button">View full letter</button>
+    </div>
+  </article>
+</section>
+
+<footer class="contact" id="contact">
   <p class="eyebrow reveal"><span class="dot"></span>STATUS: READY FOR NEW SIGNAL</p>
   <h2 class="section-title reveal">Let's sync up</h2>
   <a class="contact__email reveal" href="mailto:ambaprasad.hegde@gmail.com">ambaprasad.hegde@gmail.com</a>
@@ -1023,6 +1084,17 @@
   </details>
   <div class="build-tag" id="build-tag">REV 2026.07 · PHYSICAL ⇄ VIRTUAL</div>
 </footer>
+
+<dialog class="review-pdf" id="review-pdf" aria-labelledby="review-pdf-title">
+  <div class="review-pdf__bar">
+    <div class="review-pdf__title" id="review-pdf-title"><span>REFERENCE // 01</span>Letter of Recommendation · Alexander Kuhn</div>
+    <div class="review-pdf__actions">
+      <a class="btn" href="LOR_Alexander%20Kuhn.pdf" target="_blank" rel="noopener">Open separately</a>
+      <button class="btn btn--accent" id="review-pdf-close" type="button">Close</button>
+    </div>
+  </div>
+  <iframe title="Letter of Recommendation from Alexander Kuhn" data-src="LOR_Alexander%20Kuhn.pdf#view=FitH"></iframe>
+</dialog>
 
 <div id="toasts"></div>
 <div id="alerts"></div>
@@ -1084,6 +1156,17 @@ function toast(title,body,opts){
   document.getElementById(opts.corner==='tr'?'alerts':'toasts').appendChild(t);
   if(!opts.sticky) setTimeout(()=>t.remove(),opts.ttl||6000);
 }
+// ===== REVIEW PDF =====
+(function(){
+  const dialog=document.getElementById('review-pdf');
+  const frame=dialog.querySelector('iframe');
+  document.getElementById('review-pdf-open').addEventListener('click',()=>{
+    if(!frame.getAttribute('src'))frame.setAttribute('src',frame.dataset.src);
+    dialog.showModal();
+  });
+  document.getElementById('review-pdf-close').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+})();
 // ===== MODE TOGGLE =====
 document.getElementById('mode-toggle').addEventListener('click',()=>{document.body.classList.toggle('mode-physical');});
 // ===== TABS =====
@@ -2473,16 +2556,17 @@ function runViz6(){
     if(n>=5){n=0;Eggs.mark('stack');document.getElementById('stack-modal').classList.add('on');}
   });
 })();
-// 3. fake alarm -- fires once, only after 60s with NO interaction anywhere on the page
+// 3. fake alarm -- fires once, only after 5min with NO interaction anywhere on the page
 //    (not a flat timer, and never re-fires once triggered)
 (function(){
+  const alarmDelayMs=5*60*1000;
   let lastActivity=Date.now(), fired=false;
   ['mousemove','mousedown','touchstart','keydown','wheel','scroll'].forEach(evt=>{
     window.addEventListener(evt,()=>{lastActivity=Date.now();},{passive:true});
   });
   const iv=setInterval(()=>{
     if(fired)return clearInterval(iv);
-    if(Date.now()-lastActivity>=60000){
+    if(Date.now()-lastActivity>=alarmDelayMs){
       fired=true;clearInterval(iv);
       Eggs.mark('alarm');
       toast('⚠ ALARM A-041','MANUAL TESTING OVERLOAD DETECTED. Recommended remedy?',{alarm:true,sticky:true,corner:'tr',actions:[
