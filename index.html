@@ -182,16 +182,18 @@
   .edu-card p.desc{ font-size:.86rem; font-weight:300; color:var(--text-dim); margin-top:.5rem; line-height:1.6; }
 
   .review{ background:var(--bg-2); padding-top:5rem; padding-bottom:5rem; }
-  .review-card{ max-width:1180px; display:grid; grid-template-columns:1fr; border:1px solid var(--panel-border); border-top:2px solid var(--accent); background:linear-gradient(135deg,rgba(94,230,208,.045),transparent 45%),var(--bg); transition:border-color .3s; }
+  .review-grid{ max-width:1180px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.25rem; align-items:stretch; }
+  .review-card{ display:grid; grid-template-rows:auto 1fr; border:1px solid var(--panel-border); border-top:2px solid var(--accent); background:linear-gradient(135deg,rgba(94,230,208,.045),transparent 45%),var(--bg); transition:border-color .3s; }
   .review-card__meta{ grid-column:1/-1; display:flex; justify-content:space-between; gap:1rem; padding:.7rem 1rem; border-bottom:1px solid var(--panel-border); font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim); }
   .review-card__meta span:first-child{ color:var(--accent); }
-  .review-card blockquote{ padding:2.2rem 2.4rem; }
-  .review-card__quote{ font-family:var(--display); font-size:clamp(1.15rem,2vw,1.55rem); font-weight:500; line-height:1.55; color:var(--text); }
-  .review-card__byline{ margin-top:1.5rem; font-family:var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+  .review-card blockquote{ padding:2rem; display:flex; flex-direction:column; }
+  .review-card__quote{ font-family:var(--display); font-size:clamp(1.05rem,1.5vw,1.35rem); font-weight:500; line-height:1.55; color:var(--text); }
+  .review-card__byline{ margin-top:auto; padding-top:1.5rem; font-family:var(--mono); letter-spacing:.08em; text-transform:uppercase; }
   .review-card__name-row{ display:flex; align-items:center; flex-wrap:wrap; gap:.65rem 1rem; }
   .review-card__name{ font-size:.72rem; font-style:normal; color:var(--accent); }
   .review-card__role{ display:block; margin-top:.35rem; color:var(--text-dim); font-size:.6rem; }
-  .review-card__byline .btn{ padding:.45rem .75rem; font-size:.58rem; }
+  .review-card__byline .btn{ min-height:32px; padding:0 .75rem; display:inline-flex; align-items:center; justify-content:center; line-height:1; font-size:.58rem; }
+  .review-card__byline .btn:disabled{ opacity:.38; border-color:var(--panel-border); color:var(--text-dim); }
   .review-pdf{ position:fixed; inset:50% auto auto 50%; width:min(760px,94vw); height:min(92vh,980px); margin:0; padding:0; transform:translate(-50%,-50%); border:1px solid var(--panel-border); background:var(--bg-2); color:var(--text); overflow:hidden; }
   .review-pdf::backdrop{ background:rgba(5,8,12,.88); backdrop-filter:blur(5px); }
   .review-pdf__bar{ height:58px; padding:0 1rem 0 1.2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; border-bottom:1px solid var(--panel-border); font-family:var(--mono); }
@@ -220,6 +222,7 @@
     .proj, .proj:nth-child(even of .proj){ grid-template-columns:1fr; }
     .mirror-copy{ grid-template-columns:1fr; }
     .knowledge__grid{ grid-template-columns:1fr; }
+    .review-grid{ grid-template-columns:1fr; }
     .contact{ grid-template-columns:1fr; }
     .contact__links{ margin-top:1.5rem; }
     .build-tag{ justify-self:start; margin-top:1.4rem; }
@@ -619,6 +622,7 @@
 
     .review-card blockquote{ padding:1.35rem; }
     .review-card__quote{ font-size:1.08rem; line-height:1.55; }
+    .review-card__byline .btn{ min-height:44px; }
     .review-pdf{ width:calc(100vw - 1.5rem); max-width:760px; height:calc(100svh - 1.5rem); height:calc(100dvh - 1.5rem); max-height:980px; }
     .review-pdf__bar{ padding:max(.65rem,env(safe-area-inset-top)) max(.75rem,env(safe-area-inset-right)) .65rem max(.75rem,env(safe-area-inset-left)); }
     .review-pdf__actions{ width:100%; }
@@ -1220,22 +1224,40 @@
 <section class="review" id="review">
   <p class="eyebrow reveal">// Review</p>
   <h2 class="section-title reveal">Trusted in the field</h2>
-  <article class="review-card reveal">
-    <div class="review-card__meta">
-      <span>COLLEAGUE REFERENCE</span>
-      <span>BMW GROUP · MUNICH</span>
-    </div>
-    <blockquote cite="LOR_Alexander%20Kuhn.pdf">
-      <p class="review-card__quote">&ldquo;What impressed me most was his ability to take ownership of challenging topics and deliver results with minimal supervision. ... Over time, he developed from an intern into a trusted engineer who could be relied upon for important technical decisions and demanding projects across the world.&rdquo;</p>
-      <div class="review-card__byline">
-        <div class="review-card__name-row">
-          <cite class="review-card__name">Alexander Kuhn</cite>
-          <button class="btn btn--accent" id="review-pdf-open" type="button">View full letter</button>
-        </div>
-        <span class="review-card__role">Colleague · BMW Group</span>
+  <div class="review-grid">
+    <article class="review-card reveal">
+      <div class="review-card__meta">
+        <span>SPECIALIST REFERENCE</span>
+        <span>BMW GROUP · MUNICH</span>
       </div>
-    </blockquote>
-  </article>
+      <blockquote cite="LOR_Alexander%20Kuhn.pdf">
+        <p class="review-card__quote">&ldquo;What impressed me most was his ability to take ownership of challenging topics and deliver results with minimal supervision. ... Over time, he developed from an intern into a trusted engineer who could be relied upon for important technical decisions and demanding projects across the world.&rdquo;</p>
+        <div class="review-card__byline">
+          <div class="review-card__name-row">
+            <cite class="review-card__name">Alexander Kuhn</cite>
+            <button class="btn btn--accent" id="review-pdf-open" type="button">View full letter</button>
+          </div>
+          <span class="review-card__role">Specialist Virtual Commissioning</span>
+        </div>
+      </blockquote>
+    </article>
+    <article class="review-card reveal">
+      <div class="review-card__meta">
+        <span>COLLEAGUE REFERENCE</span>
+        <span>BMW GROUP · MUNICH</span>
+      </div>
+      <blockquote>
+        <p class="review-card__quote">&ldquo;Ambaprasad is a reliable engineer who works in a structured and practical way. He communicates clearly, supports the team, and stays focused when solving technical problems. Working with him on virtual commissioning topics has always been straightforward and productive.&rdquo;</p>
+        <div class="review-card__byline">
+          <div class="review-card__name-row">
+            <cite class="review-card__name">Florian Finke</cite>
+            <button class="btn btn--accent" type="button" disabled>View full letter</button>
+          </div>
+          <span class="review-card__role">Colleague · BMW Group</span>
+        </div>
+      </blockquote>
+    </article>
+  </div>
 </section>
 
 <footer class="contact" id="contact">
