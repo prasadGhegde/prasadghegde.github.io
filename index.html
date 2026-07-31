@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Ambaprasad Ganapathi Hegde — Virtual Commissioning & Digital Twins</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -518,6 +519,7 @@
     #mode-toggle .fs-btn{ min-width:44px; min-height:44px; margin-left:.25rem; padding-left:.55rem; display:grid; place-items:center; }
 
     .hero{ height:auto; min-height:100svh; min-height:100dvh; }
+    #factory-canvas{ touch-action:pan-y pinch-zoom; }
     .hero__content{ width:100%; height:auto; min-height:100svh; min-height:100dvh; max-width:none; padding:5.5rem 1.2rem 6.5rem; justify-content:center; }
     .hero__name{ font-size:clamp(1.25rem,7.8vw,2.5rem); line-height:1.08; }
     .hero__title{ margin-top:.9rem; font-size:clamp(.78rem,4vw,.98rem); line-height:1.6; }
@@ -1913,6 +1915,7 @@ document.querySelectorAll('.station__head').forEach(h=>{
   }
   // ---- interaction: rotate + zoom + fullscreen ----
   let dragging=false,px0=0,py0=0,autoRot=true,fsActive=false;
+  let touchGesture=null,touchStartX=0,touchStartY=0;
   let camDist=13.2,camDistT=13.2;
   const ZMIN=5.2,ZMAX=18,DEFAULT_DIST=13.2;
   // Any interaction pauses auto-rotate; rotation only resumes after 60s of no
@@ -1935,9 +1938,14 @@ document.querySelectorAll('.station__head').forEach(h=>{
   hero.addEventListener('touchstart',e=>{
     bumpInteraction();
     if(e.touches.length===2){pinch0=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);}
-    else{dragging=true;px0=e.touches[0].clientX;py0=e.touches[0].clientY;}
+    else{
+      px0=e.touches[0].clientX;py0=e.touches[0].clientY;
+      touchStartX=px0;touchStartY=py0;
+      touchGesture=phoneProfile?'pending':'rotate';
+      dragging=!phoneProfile;
+    }
   },{passive:true});
-  hero.addEventListener('touchend',()=>{dragging=false;pinch0=0;bumpInteraction();});
+  hero.addEventListener('touchend',()=>{dragging=false;pinch0=0;touchGesture=null;bumpInteraction();});
   hero.addEventListener('touchmove',e=>{
     if(e.touches.length===2&&pinch0>0){
       if(fsActive){ // pinch-zoom only available in the expanded view
@@ -1945,9 +1953,17 @@ document.querySelectorAll('.station__head').forEach(h=>{
         camDistT=Math.max(ZMIN,Math.min(ZMAX,camDistT*pinch0/d));pinch0=d;
         bumpInteraction();
       }
-    } else if(dragging){
-      plant.rotation.y+=(e.touches[0].clientX-px0)*.005;
-      px0=e.touches[0].clientX;py0=e.touches[0].clientY;
+    } else if(e.touches.length===1){
+      const x=e.touches[0].clientX,y=e.touches[0].clientY;
+      if(phoneProfile&&touchGesture==='pending'){
+        const dx=x-touchStartX,dy=y-touchStartY;
+        if(Math.max(Math.abs(dx),Math.abs(dy))<8)return;
+        touchGesture=Math.abs(dx)>Math.abs(dy)*1.15?'rotate':'scroll';
+        dragging=touchGesture==='rotate';
+      }
+      if(phoneProfile&&touchGesture==='scroll')return;
+      if(dragging)plant.rotation.y+=(x-px0)*.005;
+      px0=x;py0=y;
     }
   },{passive:true});
   hero.addEventListener('wheel',e=>{
