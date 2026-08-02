@@ -1191,7 +1191,7 @@
         <div class="review-card__byline">
           <div class="review-card__name-row">
             <cite class="review-card__name">Alexander Kuhn</cite>
-            <button class="btn btn--accent" id="review-pdf-open" type="button">View full letter</button>
+            <button class="btn btn--accent review-pdf-open" type="button" data-pdf-src="LOR_Alexander%20Kuhn.pdf" data-pdf-title="Letter of Recommendation · Alexander Kuhn" data-pdf-label="REFERENCE // 01">View full letter</button>
           </div>
           <span class="review-card__role">Specialist Virtual Commissioning</span>
         </div>
@@ -1202,14 +1202,14 @@
         <span>COLLEAGUE REFERENCE</span>
         <span>BMW GROUP · MUNICH</span>
       </div>
-      <blockquote>
-        <p class="review-card__quote">&ldquo;Ambaprasad is a reliable engineer who works in a structured and practical way. He communicates clearly, supports the team, and stays focused when solving technical problems. Working with him on virtual commissioning topics has always been straightforward and productive.&rdquo;</p>
+      <blockquote cite="LOR_Finke.pdf">
+        <p class="review-card__quote">&ldquo;Mr. Hegde impresses with his exceptional grasp of complex concepts and the ability to translate theoretical challenges directly into functioning software. Even in stressful project phases, he consistently maintains an overview, proactively assumes responsibility, and delivers top-tier quality under time pressure.&rdquo;</p>
         <div class="review-card__byline">
           <div class="review-card__name-row">
             <cite class="review-card__name">Florian Finke</cite>
-            <button class="btn btn--accent" type="button" disabled>View full letter</button>
+            <button class="btn btn--accent review-pdf-open" type="button" data-pdf-src="LOR_Finke.pdf" data-pdf-title="Letter of Recommendation · Florian Finke" data-pdf-label="REFERENCE // 02">View full letter</button>
           </div>
-          <span class="review-card__role">Colleague · BMW Group</span>
+          <span class="review-card__role">Control Technology · BMW Group</span>
         </div>
       </blockquote>
     </article>
@@ -1249,12 +1249,12 @@
 
 <dialog class="review-pdf" id="review-pdf" aria-labelledby="review-pdf-title">
   <div class="review-pdf__bar">
-    <div class="review-pdf__title" id="review-pdf-title"><span>REFERENCE // 01</span>Letter of Recommendation · Alexander Kuhn</div>
+    <div class="review-pdf__title" id="review-pdf-title"><span id="review-pdf-label">REFERENCE // 01</span><b id="review-pdf-name">Letter of Recommendation · Alexander Kuhn</b></div>
     <div class="review-pdf__actions">
       <button class="btn btn--accent" id="review-pdf-close" type="button">Close</button>
     </div>
   </div>
-  <iframe title="Letter of Recommendation from Alexander Kuhn" data-src="LOR_Alexander%20Kuhn.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;pagemode=none&amp;view=FitH"></iframe>
+  <iframe title="Letter of Recommendation · Alexander Kuhn"></iframe>
 </dialog>
 
 <div id="toasts"></div>
@@ -1327,9 +1327,18 @@ function toast(title,body,opts){
 (function(){
   const dialog=document.getElementById('review-pdf');
   const frame=dialog.querySelector('iframe');
-  document.getElementById('review-pdf-open').addEventListener('click',()=>{
-    if(!frame.getAttribute('src'))frame.setAttribute('src',frame.dataset.src);
-    dialog.showModal();
+  const title=document.getElementById('review-pdf-name');
+  const label=document.getElementById('review-pdf-label');
+  document.querySelectorAll('.review-pdf-open').forEach(button=>{
+    button.addEventListener('click',()=>{
+      const pdfTitle=button.dataset.pdfTitle;
+      const pdfSrc=`${button.dataset.pdfSrc}#toolbar=0&navpanes=0&scrollbar=0&pagemode=none&view=FitH`;
+      title.textContent=pdfTitle;
+      label.textContent=button.dataset.pdfLabel;
+      frame.title=pdfTitle;
+      if(frame.getAttribute('src')!==pdfSrc)frame.setAttribute('src',pdfSrc);
+      dialog.showModal();
+    });
   });
   document.getElementById('review-pdf-close').addEventListener('click',()=>dialog.close());
   dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
