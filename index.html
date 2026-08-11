@@ -320,23 +320,26 @@
   .synth-personal{ color:var(--amber); border:1px solid rgba(242,166,58,.55); padding:.18rem .42rem; }
   .synth-viz-actions{ display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.45rem; margin-left:auto; }
   .synth-viz-actions .btn{ display:inline-flex; align-items:center; justify-content:center; min-height:34px; padding:.45rem .62rem; font-size:.56rem; text-decoration:none; white-space:nowrap; }
-  .synth-metric-row{ gap:1.15rem; }
-  .synth-metric-row .metric{ min-width:86px; }
-  .synth-metric-row .metric b{ font-size:1.55rem; }
-  .synth-metric-row .metric span{ font-size:.56rem; line-height:1.45; }
   .synth-limit{ padding:.65rem .75rem; border:1px solid rgba(242,166,58,.35); color:var(--amber)!important; font-family:var(--mono); font-size:.62rem!important; letter-spacing:.06em; text-transform:uppercase; text-align:left!important; }
   #viz-synth .sv-node > rect, #viz-synth .sv-node text{ transition:stroke .25s ease,fill .25s ease,opacity .25s ease; }
   #viz-synth .sv-node.active > rect{ stroke:var(--cyan); }
   #viz-synth .sv-node.active .sv-title{ fill:var(--cyan); }
+  #viz-synth .sv-lane, #viz-synth .sv-step{ transition:stroke .25s ease,fill .25s ease,opacity .25s ease; }
+  #viz-synth .sv-node.active .sv-lane{ stroke:var(--cyan); }
+  #viz-synth .sv-step.active{ fill:var(--cyan); stroke:var(--cyan); opacity:1; }
   #viz-synth .sv-flow{ stroke-dasharray:6 7; }
   #viz-synth.is-running .sv-flow{ animation:svDash .7s linear infinite; }
   #viz-synth .sv-fault{ transition:opacity .25s ease; }
   #viz-synth.is-fault .sv-fault{ opacity:1; }
-  #viz-synth .sv-result{ transition:opacity .35s ease; }
-  #viz-synth.is-result .sv-result{ opacity:1; }
   @keyframes svDash{ to{ stroke-dashoffset:-26; } }
   .synth-video-modal{ position:fixed; inset:50% auto auto 50%; width:min(1100px,94vw,calc((94vh - 110px)*1.7778)); width:min(1100px,94vw,calc((94dvh - 110px)*1.7778)); max-height:94vh; max-height:94dvh; margin:0; padding:0; transform:translate(-50%,-50%); border:1px solid var(--panel-border); background:var(--bg-2); color:var(--text); overflow:hidden; }
   .synth-video-modal::backdrop{ background:rgba(5,8,12,.9); backdrop-filter:blur(6px); }
+  @media (pointer:fine){
+    body.synth-video-active, body.synth-video-active a, body.synth-video-active button, body.synth-video-active video{ cursor:auto; }
+    body.synth-video-active .synth-video-modal button{ cursor:pointer; }
+    body.synth-video-active #cursor{ display:none; }
+    .synth-video-modal::backdrop{ cursor:auto; }
+  }
   .synth-video-modal__bar{ min-height:58px; padding:.7rem 1rem .7rem 1.2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; border-bottom:1px solid var(--panel-border); font-family:var(--mono); }
   .synth-video-modal__title{ min-width:0; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .synth-video-modal__title span{ color:var(--accent); margin-right:.65rem; }
@@ -569,8 +572,6 @@
     .synth-viz-actions{ width:100%; display:grid; grid-template-columns:1fr 1fr; margin-left:0; }
     .synth-viz-actions .btn{ min-height:44px; padding:.55rem .3rem; font-size:.54rem; }
     .synth-viz-actions #viz-synth-run{ grid-column:1/-1; }
-    .synth-metric-row{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.55rem; }
-    .synth-metric-row .metric{ min-width:0; }
     .synth-video-modal{ width:calc(100vw - 1.5rem); }
     .synth-video-modal__bar{ min-height:54px; padding:.6rem .7rem; }
     .synth-video-modal__title span{ display:none; }
@@ -1096,76 +1097,85 @@
   <!-- 06 SYNTHETIC DATA DIGITAL MODEL -->
   <article class="proj synth-project reveal" id="a-synth">
     <div class="proj__viz">
-      <svg id="viz-synth" viewBox="0 0 640 410" xmlns="http://www.w3.org/2000/svg" aria-label="Animated digital model, synthetic data and anomaly inference pipeline">
-        <text x="20" y="24" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.4">ONE PRODUCTION MODEL · TWO EXECUTION MODES</text>
+      <svg id="viz-synth" viewBox="0 0 640 410" xmlns="http://www.w3.org/2000/svg" aria-label="Simplified four-stage architecture showing one shared production model feeding live OPC UA, data generation and live inference">
+        <defs>
+          <marker id="sv-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M0 0 L8 4 L0 8 Z" fill="#5ee6d0"/>
+          </marker>
+        </defs>
+        <text x="20" y="24" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.25">ONE MODEL · TWO CLOCKS · ONE LIVE DECISION LOOP</text>
+
+        <path class="sv-flow" d="M195 111 H232 M195 245 H232 M585 166 H630 V353 H620 M585 300 V310 H530 V320" fill="none" stroke="#5ee6d0" marker-end="url(#sv-arrow)"/>
 
         <g id="sv-model" class="sv-node">
-          <rect x="20" y="42" width="176" height="320" fill="#141a21" stroke="#f2a63a" stroke-width="1.3"/>
-          <text x="36" y="66" fill="#f2a63a" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1">DIGITAL MODEL</text>
-          <text class="sv-title" x="36" y="92" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="11">PRODUCTION SIGNAL</text>
-          <text class="sv-title" x="36" y="108" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="11">MODEL</text>
-          <text x="36" y="130" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="8">+ IDEAL PRODUCTION CYCLE</text>
-          <g fill="none" stroke="#39434f" stroke-width="1.2">
-            <path id="sv-wave-1" d="M36 168 H56 V150 H78 V178 H100 V158 H122 V168 H178"/>
-            <path id="sv-wave-2" d="M36 202 H64 V188 H86 V214 H112 V194 H142 V202 H178"/>
-            <path id="sv-wave-3" d="M36 236 H52 V220 H74 V246 H104 V226 H132 V236 H178"/>
-          </g>
-          <text x="36" y="266" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="8">HEALTHY CYCLES · REPEATABLE</text>
+          <rect x="20" y="48" width="175" height="310" fill="#141a21" stroke="#f2a63a" stroke-width="1.3"/>
+          <text x="36" y="72" fill="#f2a63a" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing=".9">DIGITAL MODEL</text>
+          <text x="36" y="89" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="7">ONE SHARED PHYSICS MODEL</text>
+          <line x1="36" y1="106" x2="179" y2="106" stroke="#39434f"/>
+
+          <text class="sv-title" x="36" y="135" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="8.2">IDEAL PRODUCTION CYCLE</text>
+          <text class="sv-title" x="36" y="165" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="8.2">+ PRODUCTION SIGNAL MODEL</text>
+          <text class="sv-title" x="36" y="195" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="8.2">+ SIMULATION PROFILE</text>
+          <path class="sv-lane" d="M36 220 H60 V210 H82 V231 H105 V216 H128 V225 H179" fill="none" stroke="#39434f" stroke-width="1.2"/>
+
+          <text x="36" y="253" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="7.2">SAME PHYSICS · DIFFERENT CLOCK</text>
+          <circle cx="41" cy="275" r="3.5" fill="#0a0e14" stroke="#5ee6d0"/>
+          <text x="52" y="278" fill="#5ee6d0" font-family="JetBrains Mono, monospace" font-size="6.8">LIVE / WALL CLOCK</text>
+          <circle cx="41" cy="296" r="3.5" fill="#0a0e14" stroke="#5ee6d0"/>
+          <text x="52" y="299" fill="#5ee6d0" font-family="JetBrains Mono, monospace" font-size="6.8">ACCELERATED / FIXED STEP</text>
+
           <g class="sv-fault" opacity=".22">
-            <rect x="36" y="286" width="144" height="50" fill="none" stroke="#e24b4a"/>
-            <text x="48" y="305" fill="#e24b4a" font-family="JetBrains Mono, monospace" font-size="8">FAULT INJECTION</text>
-            <text x="48" y="322" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="7.5">DRILL WEAR + 9 MORE</text>
+            <line x1="36" y1="320" x2="179" y2="320" stroke="#e24b4a"/>
+            <text x="36" y="339" fill="#e24b4a" font-family="JetBrains Mono, monospace" font-size="6.8">CONTROLLED FAULT PROFILE ACTIVE</text>
           </g>
         </g>
 
-        <text x="224" y="58" fill="#5ee6d0" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="1">LIVE PATH</text>
-        <path class="sv-flow" d="M196 102 H224 M334 102 H360 M470 102 H496" fill="none" stroke="#5ee6d0"/>
-        <g id="sv-live-opc" class="sv-node">
-          <rect x="224" y="72" width="110" height="60" fill="#141a21" stroke="#39434f"/>
-          <text class="sv-title" x="279" y="96" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">OPC UA</text>
-          <text x="279" y="114" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">~145 SIGNALS</text>
+        <g id="sv-live-system" class="sv-node">
+          <rect x="232" y="56" width="388" height="110" fill="#141a21" stroke="#39434f"/>
+          <text class="sv-title" x="250" y="79" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="1">LIVE SYSTEM</text>
+          <line class="sv-lane" x1="265" y1="122" x2="585" y2="122" stroke="#39434f" marker-end="url(#sv-arrow)"/>
+          <circle id="sv-live-opc" class="sv-step" cx="265" cy="122" r="5" fill="#0a0e14" stroke="#5f6b78"/>
+          <circle id="sv-live-collector" class="sv-step" cx="370" cy="122" r="5" fill="#0a0e14" stroke="#5f6b78"/>
+          <circle id="sv-live-data" class="sv-step" cx="475" cy="122" r="5" fill="#0a0e14" stroke="#5f6b78"/>
+          <circle id="sv-live-ui" class="sv-step" cx="585" cy="122" r="5" fill="#0a0e14" stroke="#5f6b78"/>
+          <text x="265" y="106" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="7.4" text-anchor="middle">OPC UA</text>
+          <text x="370" y="106" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="7.4" text-anchor="middle">.NET COLLECTOR</text>
+          <text x="475" y="106" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="7.4" text-anchor="middle">SQLITE + API</text>
+          <text x="585" y="106" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="7.4" text-anchor="middle">REACT UI</text>
+          <text x="265" y="146" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="6.1" text-anchor="middle">SERVER</text>
+          <text x="370" y="146" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="6.1" text-anchor="middle">SUBSCRIPTIONS</text>
+          <text x="475" y="146" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="6.1" text-anchor="middle">REST + SIGNALR</text>
+          <text x="585" y="146" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="6.1" text-anchor="middle">STATE + HISTORY</text>
         </g>
-        <g id="sv-live-collector" class="sv-node">
-          <rect x="360" y="72" width="110" height="60" fill="#141a21" stroke="#39434f"/>
-          <text class="sv-title" x="415" y="96" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">COLLECTOR</text>
-          <text x="415" y="114" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">REST · SIGNALR</text>
+
+        <g id="sv-data-system" class="sv-node">
+          <rect x="232" y="190" width="388" height="110" fill="#141a21" stroke="#39434f"/>
+          <text class="sv-title" x="250" y="213" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="1">DATA + MODEL</text>
+          <line class="sv-lane" x1="265" y1="256" x2="585" y2="256" stroke="#39434f" marker-end="url(#sv-arrow)"/>
+          <circle id="sv-data-export" class="sv-step" cx="265" cy="256" r="5" fill="#0a0e14" stroke="#5f6b78"/>
+          <circle id="sv-data-telemetry" class="sv-step" cx="370" cy="256" r="5" fill="#0a0e14" stroke="#5f6b78"/>
+          <circle id="sv-data-features" class="sv-step" cx="475" cy="256" r="5" fill="#0a0e14" stroke="#5f6b78"/>
+          <circle id="sv-data-contract" class="sv-step" cx="585" cy="256" r="5" fill="#0a0e14" stroke="#5f6b78"/>
+          <text x="265" y="240" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">SHIFT EXPORT</text>
+          <text x="370" y="240" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">LABELED DATA</text>
+          <text x="475" y="240" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">AUDITS + FEATURES</text>
+          <text x="585" y="240" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">MODEL CONTRACT</text>
+          <text x="265" y="280" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="6.1" text-anchor="middle">FIXED STEP</text>
+          <text x="370" y="280" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="6.1" text-anchor="middle">QUALITY + META</text>
+          <text x="475" y="280" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="6.1" text-anchor="middle">PARQUET</text>
+          <text x="585" y="280" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="6.1" text-anchor="middle">LIGHTGBM</text>
         </g>
+
         <g id="sv-live-inference" class="sv-node">
-          <rect x="496" y="72" width="124" height="60" fill="#141a21" stroke="#39434f"/>
-          <text class="sv-title" x="558" y="96" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">LIVE INFERENCE</text>
-          <text id="sv-live-state" x="558" y="114" fill="#3ddc84" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">NORMAL · P 0.02</text>
+          <rect x="335" y="320" width="285" height="68" fill="#141a21" stroke="#39434f"/>
+          <text class="sv-title" x="477.5" y="342" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="8.2" text-anchor="middle">LIVE INFERENCE + EVENT API</text>
+          <text x="477.5" y="361" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="6.4" text-anchor="middle">OPC UA READ + COMMITTED FEATURE CONTRACT</text>
+          <text x="477.5" y="377" fill="#5ee6d0" font-family="JetBrains Mono, monospace" font-size="6.4" text-anchor="middle">PERSIST DECISION → REACT UI</text>
         </g>
-
-        <text x="224" y="186" fill="#5ee6d0" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="1">ACCELERATED DATA PATH</text>
-        <path class="sv-flow" d="M196 230 H224 M334 230 H360 M470 230 H496" fill="none" stroke="#5ee6d0"/>
-        <g id="sv-data-shifts" class="sv-node">
-          <rect x="224" y="200" width="110" height="60" fill="#141a21" stroke="#39434f"/>
-          <text class="sv-title" x="279" y="224" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">230 × 8H</text>
-          <text x="279" y="242" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">LABELED SHIFTS</text>
-        </g>
-        <g id="sv-data-windows" class="sv-node">
-          <rect x="360" y="200" width="110" height="60" fill="#141a21" stroke="#39434f"/>
-          <text class="sv-title" x="415" y="224" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">5S WINDOWS</text>
-          <text x="415" y="242" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">FEATURES</text>
-        </g>
-        <g id="sv-data-model" class="sv-node">
-          <rect x="496" y="200" width="124" height="60" fill="#141a21" stroke="#39434f"/>
-          <text class="sv-title" x="558" y="224" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">LIGHTGBM</text>
-          <text x="558" y="242" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">ANOMALY BASELINE</text>
-        </g>
-
-        <rect x="224" y="292" width="396" height="70" fill="#0a0e14" stroke="#39434f"/>
-        <text x="240" y="313" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="1">HELD-OUT SYNTHETIC TEST SET</text>
-        <text id="sv-result-wait" x="240" y="342" fill="#5f6b78" font-family="JetBrains Mono, monospace" font-size="9">AWAITING PIPELINE RUN...</text>
-        <g class="sv-result" opacity="0">
-          <text x="240" y="342" fill="#5ee6d0" font-family="JetBrains Mono, monospace" font-size="13">ROC-AUC 0.913</text>
-          <text x="386" y="342" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="9">PR-AUC 0.953</text>
-          <text x="510" y="342" fill="#eef1f4" font-family="JetBrains Mono, monospace" font-size="9">F1 0.874</text>
-        </g>
-        <text x="320" y="393" fill="#f2a63a" font-family="JetBrains Mono, monospace" font-size="8" text-anchor="middle" letter-spacing="1">SIMULATOR PERFORMANCE · NOT PRODUCTION VALIDATION</text>
+        <text x="320" y="404" fill="#f2a63a" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle" letter-spacing=".8">SHARED PHYSICS · TRACEABLE DATA · LIVE DECISION</text>
       </svg>
       <div class="viz-bar">
-        <span class="viz-status" id="viz-synth-status">MODEL READY · TWO EXECUTION MODES</span>
+        <span class="viz-status" id="viz-synth-status">FOUR-STAGE PIPELINE READY</span>
         <div class="synth-viz-actions">
           <button class="btn btn--accent" id="synth-video-open" type="button">Play project demo</button>
           <a class="btn" href="https://github.com/prasadGhegde/SynthDataDigitalTwin" target="_blank" rel="noopener noreferrer">View on GitHub</a>
@@ -1176,29 +1186,24 @@
     <div class="proj__info">
       <p class="mod"><span class="led led--amber"></span>PROJECT 06 · <span class="synth-personal">PERSONAL R&amp;D</span> · INDUSTRIAL AI</p>
       <h3>Synthetic Data &amp; ML from a Production-Line Digital Model</h3>
-      <div class="tabs"><button class="tab-btn on" data-tab="simple">Simple</button><button class="tab-btn" data-tab="arch">Architecture</button><button class="tab-btn" data-tab="impact">Results</button></div>
+      <div class="tabs"><button class="tab-btn on" data-tab="simple">Simple</button><button class="tab-btn" data-tab="arch">Architecture</button><button class="tab-btn" data-tab="impact">Outcome</button></div>
       <div class="tab-stack">
         <div class="tab-pane on" data-pane="simple">
           <p>Industrial fault data is scarce: failures are rare, labels are expensive and deliberate production faults are impractical.</p>
-          <p>I use one <span class="hl">production-line digital model</span> to generate controlled healthy and faulty behavior, then carry its signals through collection, feature engineering, training and live anomaly inference. Run the pipeline on the right.</p>
+          <p>I built one <span class="hl">production-line digital model</span> that supports live OPC UA monitoring, accelerated labeled-data generation and browser-visible inference decisions. Run the architecture visualization.</p>
         </div>
         <div class="tab-pane" data-pane="arch">
-          <p><span class="arch-k">One model:</span> ProductionSignalModel + IdealProductionCycle supplies both execution paths.</p>
-          <p><span class="arch-k">Live path:</span> OPC UA (~145 machine signals) → collector → SQLite, REST and SignalR → live UI and inference.</p>
-          <p><span class="arch-k">Data path:</span> accelerated simulation → 230 eight-hour shifts → healthy + 10 controlled fault scenarios → 5-second windows → LightGBM.</p>
+          <p><span class="arch-k">Shared model:</span> IdealProductionCycle + ProductionSignalModel + ProductionSimulationProfile. One physics implementation, driven by wall-clock or fixed-step time.</p>
+          <p><span class="arch-k">Live:</span> OPC UA → monitored .NET collector → bounded ingest + SQLite → REST + SignalR → React UI.</p>
+          <p><span class="arch-k">Data / inference:</span> accelerated export → labeled telemetry → audits + Parquet windows → LightGBM contract. Live inference reads OPC UA and posts to the Event API.</p>
         </div>
         <div class="tab-pane" data-pane="impact">
-          <p>On a <span class="hl">held-out synthetic test set</span>, the anomaly-detection baseline reached <span class="hl">ROC-AUC 0.913</span>, PR-AUC 0.953 and F1 0.874.</p>
-          <p>The experiment supports the synthetic-data approach; transferring performance to real production data and reducing false alarms remain the next engineering challenges.</p>
-          <p class="synth-limit">Simulator performance · not production validation</p>
+          <p>The result is an <span class="hl">end-to-end industrial AI reference pipeline</span>: deterministic simulation, OPC UA telemetry, auditable data artifacts, a committed model contract and live decisions delivered back to the application.</p>
+          <p>The architecture keeps simulator behavior, dataset generation and online inference aligned instead of treating them as separate demonstrations.</p>
+          <p class="synth-limit">Synthetic engineering experiment · production-data transfer remains future work</p>
         </div>
       </div>
-      <div class="metric-row synth-metric-row">
-        <div class="metric"><b>230</b><span>8-hour shifts</span></div>
-        <div class="metric"><b>10</b><span>fault scenarios</span></div>
-        <div class="metric"><b>0.913</b><span>ROC-AUC</span></div>
-      </div>
-      <div class="proj__tags"><span class="tag">C# / .NET</span><span class="tag">OPC UA</span><span class="tag">Python</span><span class="tag">LightGBM</span><span class="tag">React</span><span class="tag">Digital Model</span></div>
+      <div class="proj__tags"><span class="tag">C# / .NET</span><span class="tag">OPC UA</span><span class="tag">ASP.NET Core</span><span class="tag">SQLite / SignalR</span><span class="tag">React</span><span class="tag">Python / LightGBM</span></div>
     </div>
   </article>
 
@@ -1456,6 +1461,7 @@ document.querySelectorAll('.proj__info').forEach(info=>{
   if(!modal||!frame||!video||!open||!close)return;
   open.addEventListener('click',()=>{
     if(!modal.open)modal.showModal();
+    document.body.classList.add('synth-video-active');
     if(video.readyState===0)video.load();
     const attempt=video.play();
     if(attempt)attempt.catch(()=>{});
@@ -1466,7 +1472,10 @@ document.querySelectorAll('.proj__info').forEach(info=>{
     const rect=modal.getBoundingClientRect();
     if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom)closeModal();
   });
-  modal.addEventListener('close',()=>video.pause());
+  modal.addEventListener('close',()=>{
+    video.pause();
+    document.body.classList.remove('synth-video-active');
+  });
   video.addEventListener('error',()=>frame.classList.add('is-unavailable'));
 })();
 // ===== STATIONS (timeline accordion) =====
@@ -2596,44 +2605,32 @@ function runVizSynth(){
   if(!svg||!status||!button)return;
   svBusy=true;button.disabled=true;
   svTimers.forEach(clearTimeout);svTimers=[];
-  svg.classList.remove('is-running','is-fault','is-result');
+  svg.classList.remove('is-running','is-fault');
   svg.querySelectorAll('.sv-node').forEach(node=>node.classList.remove('active'));
-  ['sv-wave-1','sv-wave-2','sv-wave-3'].forEach(id=>$(id).setAttribute('stroke','#39434f'));
-  $('sv-live-inference').querySelector('rect').setAttribute('stroke','#39434f');
-  $('sv-live-state').setAttribute('fill','#3ddc84');
-  $('sv-live-state').textContent='NORMAL · P 0.02';
-  $('sv-result-wait').setAttribute('opacity',1);
+  svg.querySelectorAll('.sv-step').forEach(step=>step.classList.remove('active'));
   const after=(ms,fn)=>svTimers.push(setTimeout(fn,ms));
   const active=(id,label)=>{const node=$(id);node&&node.classList.add('active');if(label)status.textContent=label;};
+  const step=(id,label)=>{const node=$(id);node&&node.classList.add('active');if(label)status.textContent=label;};
 
   svg.classList.add('is-running');
-  active('sv-model','DIGITAL MODEL · GENERATING REPEATABLE CYCLES');
-  after(180,()=>$('sv-wave-1').setAttribute('stroke','#5ee6d0'));
-  after(300,()=>$('sv-wave-2').setAttribute('stroke','#5ee6d0'));
-  after(420,()=>$('sv-wave-3').setAttribute('stroke','#5ee6d0'));
-  after(650,()=>active('sv-live-opc','LIVE MODE · STREAMING OPC UA SIGNALS'));
-  after(1050,()=>active('sv-live-collector','LIVE MODE · COLLECTING MACHINE TELEMETRY'));
-  after(1450,()=>active('sv-live-inference','LIVE INFERENCE · NORMAL OPERATION · P 0.02'));
-  after(1900,()=>{
+  active('sv-model','SHARED SIMULATION · PRODUCTION CYCLE + SIGNAL MODEL');
+  after(450,()=>{active('sv-live-system');step('sv-live-opc','LIVE CLOCK · OPC UA SERVER');});
+  after(750,()=>step('sv-live-collector','MONITORED ITEMS · .NET COLLECTOR'));
+  after(1050,()=>step('sv-live-data','SQLITE · REST API · SIGNALR'));
+  after(1350,()=>step('sv-live-ui','LIVE STATE + HISTORY · REACT UI'));
+  after(1650,()=>{
     svg.classList.add('is-fault');
-    $('sv-live-state').setAttribute('fill','#e24b4a');
-    $('sv-live-state').textContent='FAULT INJECTED';
-    status.textContent='CONTROLLED FAULT INJECTED · LABELED AT SOURCE';
+    status.textContent='SIMULATION PROFILE · CONTROLLED FAULT APPLIED';
   });
-  after(2350,()=>active('sv-data-shifts','ACCELERATED MODE · GENERATING 230 LABELED SHIFTS'));
-  after(2750,()=>active('sv-data-windows','FEATURE ENGINEERING · 5-SECOND WINDOWS'));
-  after(3150,()=>active('sv-data-model','TRAINING LIGHTGBM ANOMALY BASELINE'));
-  after(3650,()=>{
-    svg.classList.add('is-result');
-    $('sv-result-wait').setAttribute('opacity',0);
-    $('sv-live-inference').querySelector('rect').setAttribute('stroke','#e24b4a');
-    $('sv-live-state').textContent='ANOMALY DETECTED';
-    status.textContent='RESULT · ROC-AUC 0.913 · SYNTHETIC TEST SET';
-  });
-  after(4700,()=>{
+  after(2000,()=>{active('sv-data-system');step('sv-data-export','ACCELERATED CLOCK · SHIFT EXPORT');});
+  after(2300,()=>step('sv-data-telemetry','LABELED TELEMETRY + QUALITY + METADATA'));
+  after(2600,()=>step('sv-data-features','SEMANTIC + FEATURE AUDITS · PARQUET'));
+  after(2900,()=>step('sv-data-contract','LIGHTGBM MODEL + FEATURE CONTRACT'));
+  after(3350,()=>active('sv-live-inference','LIVE INFERENCE · DECISION POSTED TO EVENT API'));
+  after(4100,()=>{
     svg.classList.remove('is-running');
     button.disabled=false;svBusy=false;
-    status.textContent='PIPELINE COMPLETE · SIMULATOR EVALUATION';
+    status.textContent='PIPELINE COMPLETE · DECISION RETURNED TO LIVE UI';
   });
 }
 
