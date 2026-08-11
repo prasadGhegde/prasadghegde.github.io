@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Ambaprasad Ganapathi Hegde — Specialist for Digitalisation and Automation</title>
+<title>Ambaprasad Ganapathi Hegde — Specialist in Digitalisation &amp; Automation</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -80,7 +80,8 @@
   .hero__name{ font-family:var(--display); font-weight:700; font-size:clamp(2.1rem,5.2vw,3.9rem); line-height:1.15; text-shadow:0 2px 18px rgba(13,17,23,.9), 0 0 40px rgba(13,17,23,.7); }
   .hero__name-mobile{ display:none; }
   .hero__title{ font-family:var(--mono); font-size:clamp(.95rem,1.6vw,1.15rem); color:var(--steel); margin-top:1.2rem; letter-spacing:.04em; text-shadow:0 2px 14px rgba(13,17,23,.95); }
-  .hero__title .dash{ color:var(--amber); margin:0 .5em; }
+  .hero__title-line{ display:block; white-space:nowrap; }
+  .hero__title-specialty{ margin-top:.28rem; }
   .hero__tagline{ margin-top:1.6rem; max-width:54ch; color:var(--steel); font-weight:400; font-size:1.02rem; line-height:1.75;
     background:rgba(13,17,23,.78); border:1px solid var(--panel-border); border-left:2px solid var(--accent);
     padding:1.1rem 1.3rem; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
@@ -100,29 +101,11 @@
   .hero__scroll span{ width:1px; height:30px; background:linear-gradient(var(--text-dim),transparent); animation:scrollcue 2s ease-in-out infinite; }
   @keyframes scrollcue{ 0%{opacity:.2;transform:scaleY(.4);} 50%{opacity:1;transform:scaleY(1);} 100%{opacity:.2;transform:scaleY(.4);} }
 
-  .about{ background:var(--bg); }
-  .twin-wrap{ max-width:1180px; margin-top:1rem; }
-  .twin-controls{ display:flex; gap:.8rem; margin-bottom:1.2rem; }
   .btn{ font-family:var(--mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; background:transparent; color:var(--text);
     border:1px solid var(--panel-border); padding:.55rem 1rem; transition:border-color .2s, color .2s, background .2s; }
   .btn:hover{ border-color:var(--accent); color:var(--accent); }
   .btn--accent{ border-color:var(--accent); color:var(--accent); }
   .btn--accent:hover{ background:var(--accent); color:var(--bg); }
-  .twin-frame{ border:1px solid var(--panel-border); background:var(--bg-2); padding:1rem; display:flex; gap:1rem; }
-  .twin-frame svg{ flex:1; min-width:0; height:auto; }
-  .twin-dash{ width:250px; flex:none; border-left:1px solid var(--panel-border); padding-left:1rem;
-    font-family:var(--mono); font-size:.66rem; letter-spacing:.06em; color:var(--text-dim); display:flex; flex-direction:column; gap:.34rem; }
-  .twin-dash .dh{ color:var(--text); letter-spacing:.14em; font-size:.62rem; margin-top:.55rem; border-bottom:1px solid var(--panel-border); padding-bottom:.3rem; }
-  .twin-dash .dh:first-child{ margin-top:0; }
-  .twin-dash .row{ display:flex; justify-content:space-between; }
-  .twin-dash .v{ color:var(--text); }
-  .twin-dash .v.on{ color:var(--green); }
-  .twin-dash .v.off{ color:var(--text-dim); }
-  .twin-dash .v.warn{ color:var(--amber); }
-  .twin-dash .v.err{ color:var(--red); }
-  .twin-caption{ font-family:var(--mono); font-size:.68rem; color:var(--text-dim); letter-spacing:.1em; margin-top:.8rem; line-height:1.7; }
-  .dt-explainer{ margin-top:2.6rem; max-width:1180px; font-size:.98rem; font-weight:300; line-height:1.8; color:var(--text-dim); text-align:justify; text-justify:inter-word; }
-  .dt-explainer .hl{ color:var(--text); font-weight:400; }
   .mirror-copy{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.6rem; margin-top:2.6rem; max-width:1180px; }
   .mirror-box{ border:1px solid var(--panel-border); background:var(--bg-2); padding:1.8rem; position:relative; }
   .mirror-box.phys{ border-top:2px solid var(--amber); }
@@ -143,6 +126,9 @@
   .proj:nth-child(even of .proj){ grid-template-columns:1.25fr 1fr; }
   .proj__viz{ border:1px solid var(--panel-border); background:#0a0e14; padding:1rem; position:relative; min-height:300px; display:flex; flex-direction:column; }
   .proj__viz svg{ width:100%; height:auto; flex:1; }
+  .twin-project-viz{ justify-content:center; align-items:stretch; }
+  .twin-project{ width:100%; min-width:0; min-height:250px; display:flex; align-items:center; }
+  #twin-svg{ display:block; width:100%; min-width:0; height:auto; }
   .viz-bar{ display:flex; align-items:center; justify-content:space-between; margin-top:.8rem; gap:1rem; flex-wrap:wrap; }
   .viz-status{ font-family:var(--mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-dim); }
   .proj__info .mod{ font-family:var(--mono); font-size:.64rem; letter-spacing:.16em; text-transform:uppercase; color:var(--text-dim); display:flex; align-items:center; gap:.6rem; margin-bottom:1rem; }
@@ -210,18 +196,17 @@
   .contact{ background:var(--bg); padding:4rem 8% 2.5rem; display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:4rem; align-items:end; }
   .contact .eyebrow{ grid-column:1/-1; margin-bottom:.7rem; }
   .contact .section-title{ grid-column:1/-1; max-width:18ch; margin-bottom:1.5rem; }
+  .contact__primary{ display:flex; flex-direction:column; align-items:flex-start; gap:.7rem; }
   .contact__email{ display:inline-block; width:fit-content; max-width:100%; justify-self:start; font-family:var(--mono); font-size:1.05rem; border:1px solid var(--accent); color:var(--accent); padding:.72rem 1rem; text-decoration:none; transition:background .2s, color .2s, border-color .3s; }
   .contact__email:hover{ background:var(--accent); color:var(--bg); }
+  .contact__phone{ font-family:var(--mono); font-size:.82rem; letter-spacing:.08em; color:var(--text-dim); text-decoration:none; transition:color .2s; }
+  .contact__phone:hover{ color:var(--accent); }
   .contact__links{ display:flex; flex-wrap:wrap; gap:1rem 2rem; align-self:center; font-family:var(--mono); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); }
   .contact__links a{ text-decoration:none; transition:color .2s; }
   .contact__links a:hover{ color:var(--accent); }
   .contact .eggs{ margin-top:2.2rem; }
   .build-tag{ justify-self:end; margin-top:2.2rem; font-family:var(--mono); font-size:.65rem; color:var(--text-dim); letter-spacing:.1em; }
 
-  @media (max-width:980px){
-    .twin-frame{ flex-direction:column; }
-    .twin-dash{ width:100%; border-left:none; border-top:1px solid var(--panel-border); padding-left:0; padding-top:1rem; }
-  }
   @media (max-width:920px){
     .proj, .proj:nth-child(even of .proj){ grid-template-columns:1fr; }
     .mirror-copy{ grid-template-columns:1fr; }
@@ -278,7 +263,7 @@
   <div class="hero__content">
     <p class="eyebrow"><span class="dot"></span>Munich, Germany</p>
     <h1 class="hero__name" aria-label="Ambaprasad Ganapathi Hegde"><span class="hero__name-desktop" aria-hidden="true">Ambaprasad&nbsp;Ganapathi<br>Hegde</span><span class="hero__name-mobile" aria-hidden="true">Ambaprasad<br>Ganapathi Hegde</span></h1>
-    <p class="hero__title">Specialist for Digitalisation and Automation<span class="dash">·</span>Virtual Commissioning</p>
+    <p class="hero__title"><span class="hero__title-line">Specialist in Digitalisation &amp; Automation</span><span class="hero__title-line hero__title-specialty">Virtual Commissioning</span></p>
     <p class="hero__tagline">I create and validate <span class="hl">digital twins of production lines</span> before they exist in steel — combining PLC test automation, plant simulation and AI-assisted validation to <span class="hl">catch faults early, shorten commissioning and de-risk Industry 4.0 launches</span>.</p>
     <nav class="hero__actions" aria-label="Portfolio shortcuts">
       <a class="btn btn--accent" href="#work">View projects</a>
@@ -287,68 +272,6 @@
     </nav>
   </div>
   <div class="hero__scroll"><span></span>Scroll</div>
-</section>
-
-<section class="about" id="about">
-  <p class="eyebrow reveal">// About — a live digital twin</p>
-  <h2 class="section-title reveal">Two versions of the same system</h2>
-  <div class="twin-wrap reveal">
-    <div class="hmi" data-probe="HMI|Styled after a SIMATIC WinCC operator panel — every button really drives the twin below. Try MANUAL.">
-      <div class="hmi__title">LINE 01 · OPERATOR PANEL</div>
-      <div class="hmi__row">
-        <button class="hmi-btn hmi-btn--green" id="twin-start">START</button>
-        <button class="hmi-btn hmi-btn--red" id="twin-stop">STOP</button>
-        <button class="hmi-btn" id="twin-reset">RESET</button>
-        <button class="hmi-btn hmi-btn--active" id="twin-auto-btn">AUTO</button>
-        <button class="hmi-btn" id="twin-man-btn">MANUAL</button>
-        <button class="hmi-btn" id="twin-back">◀ BWD</button>
-        <button class="hmi-btn" id="twin-fwd">FWD ▶</button>
-        <button class="hmi-btn" id="twin-fast">FAST</button>
-        <button class="hmi-btn" id="twin-drill">DRILL</button>
-      </div>
-      <div class="hmi__lamps">
-        <span class="lamp-wrap"><span class="lamp lamp--on" id="lamp-run"></span>RUN</span>
-        <span class="lamp-wrap"><span class="lamp lamp--on" id="lamp-sync"></span>SYNC</span>
-        <span class="lamp-wrap"><span class="lamp" id="lamp-fault"></span>FAULT</span>
-        <span class="lamp-wrap"><span class="lamp lamp--amber" id="lamp-auto"></span>AUTO</span>
-      </div>
-    </div>
-    <div class="twin-frame">
-      <svg id="twin-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
-        <text x="30" y="30" fill="#f2a63a" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2">PHYSICAL MODEL</text>
-        <g id="phys-scene"></g>
-        <line x1="500" y1="44" x2="500" y2="280" stroke="rgba(139,149,161,0.3)" stroke-dasharray="4 5"/>
-        <text x="500" y="30" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="2">OPC UA</text>
-        <circle id="sync-dot-a" r="4" fill="#5ee6d0" opacity="0"/>
-        <circle id="sync-dot-b" r="4" fill="#f2a63a" opacity="0"/>
-        <text x="970" y="30" fill="#5ee6d0" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2" text-anchor="end">PLANT SIMULATION</text>
-        <g id="virt-scene"></g>
-      </svg>
-      <div class="twin-dash" id="twin-dash">
-        <div class="dh">SYSTEM</div>
-        <div class="row"><span>STATE</span><span class="v on" id="d-state">RUNNING</span></div>
-        <div class="row"><span>MODE</span><span class="v warn" id="d-mode">AUTO</span></div>
-        <div class="row"><span>SYNC</span><span class="v on" id="d-sync">OK · <span id="d-lat">12</span> ms</span></div>
-        <div class="dh">KPI</div>
-        <div class="row"><span>ENERGY</span><span class="v" id="d-energy">4.21 kW</span></div>
-        <div class="row"><span>THROUGHPUT</span><span class="v" id="d-tp">36/h</span></div>
-        <div class="row"><span>CYCLE</span><span class="v" id="d-cycle">8.4 s</span></div>
-        <div class="dh">CONVEYORS</div>
-        <div class="row"><span>CONV 1 · A→B</span><span class="v" id="d-c1">IDLE</span></div>
-        <div class="row"><span>CONV 2 · B→C</span><span class="v" id="d-c2">IDLE</span></div>
-        <div class="row"><span>CONV 3 · C→D</span><span class="v" id="d-c3">IDLE</span></div>
-        <div class="row"><span>CONV 4 · OUT</span><span class="v" id="d-c4">IDLE</span></div>
-        <div class="dh">STATIONS</div>
-        <div class="row"><span>STN B · INSPECT</span><span class="v" id="d-insp">—</span></div>
-        <div class="row"><span>STN C · DRILL</span><span class="v" id="d-drill">IDLE</span></div>
-        <div class="dh">PARTS</div>
-        <div class="row"><span>OK</span><span class="v on" id="d-ok">0</span></div>
-        <div class="row"><span>REJECTED</span><span class="v err" id="d-rej">0</span></div>
-      </div>
-    </div>
-    <p class="twin-caption">LIVE MODEL — based on the digital twin I built at OVGU: a miniature production line mirrored in Tecnomatix Plant Simulation over OPC UA, with two-way controls and a live KPI dashboard.</p>
-  </div>
-  <p class="dt-explainer reveal">A <span class="hl">digital twin</span> connects a real production line to its virtual replica in both directions, in real time — that part above is exactly what I build for a living. The payoff isn't the mirroring itself; it's what it lets a plant do: catch a PLC fault, a collision, or a bad test case in software, <span class="hl">weeks before it can cost a shift on the real line</span>. Fewer commissioning surprises, faster ramp-up, and engineers who trust the model enough to test on it instead of the machine. That's the actual job — not building a copy of the plant, but making sure the copy saves someone real time and money before steel ever moves.</p>
 </section>
 
 <style>
@@ -365,23 +288,6 @@
   .deploy-note{ margin-top:1.6rem; max-width:868px; font-size:.95rem; font-weight:300; line-height:1.75; color:var(--text-dim); text-align:justify; text-justify:inter-word; }
   .deploy-note .hl{ color:var(--text); font-weight:400; }
   @keyframes sitehalo{ 0%{opacity:.7;} 70%{opacity:0;} 100%{opacity:0;} }
-
-  .hmi{ display:block; width:100%; max-width:1180px; box-sizing:border-box; border:1px solid var(--panel-border); background:linear-gradient(180deg,#1b222c,#141a21); padding:.75rem 1.1rem; margin-bottom:1.2rem; }
-  .hmi__title{ font-family:var(--mono); font-size:.6rem; letter-spacing:.16em; color:var(--text-dim); margin-bottom:.7rem; }
-  .hmi__row{ display:flex; gap:.6rem; }
-  .hmi__row .hmi-btn{ flex:1; }
-  .hmi-btn{ font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; padding:.6rem 1rem; color:var(--text);
-    background:linear-gradient(180deg,#2a3340,#1b222c); border:1px solid #39434f;
-    border-top-color:#4a5563; border-left-color:#4a5563; box-shadow:inset 0 1px 0 rgba(255,255,255,.06); }
-  .hmi-btn:active{ background:#141a21; box-shadow:inset 0 2px 4px rgba(0,0,0,.5); }
-  .hmi-btn--green{ background:linear-gradient(180deg,#1f8a4d,#166b3a); border-color:#2aa860; color:#eafff2; }
-  .hmi-btn--red{ background:linear-gradient(180deg,#b03a39,#8c2b2a); border-color:#d05a58; color:#ffecec; }
-  .hmi__lamps{ display:flex; gap:1.1rem; margin-top:.8rem; font-family:var(--mono); font-size:.58rem; letter-spacing:.12em; color:var(--text-dim); }
-  .lamp-wrap{ display:flex; align-items:center; gap:.35rem; }
-  .lamp{ width:9px; height:9px; border-radius:50%; background:#2a3340; border:1px solid #39434f; }
-  .lamp--on{ background:var(--green); box-shadow:0 0 7px 1px var(--green); border-color:var(--green); }
-  .lamp--amber{ background:var(--amber); box-shadow:0 0 7px 1px var(--amber); border-color:var(--amber); }
-  .lamp--red{ background:var(--red); box-shadow:0 0 7px 1px var(--red); border-color:var(--red); }
 
   .station{ border:1px solid var(--panel-border); background:var(--bg); margin-bottom:1.2rem; }
   .station__head{ display:flex; align-items:center; gap:1rem; padding:1.2rem 1.5rem; user-select:none; }
@@ -424,10 +330,6 @@
   body.eng-mode section *, body.eng-mode .proj *{ outline:1px dashed rgba(94,230,208,.16); }
   .eggs{ margin-top:4rem; font-family:var(--mono); font-size:.68rem; color:var(--text-dim); letter-spacing:.06em; line-height:2; max-width:560px; }
   .eggs summary{ color:var(--accent); cursor:pointer; letter-spacing:.12em; text-transform:uppercase; font-size:.64rem; transition:color .3s; }
-  .hmi__title{ margin-bottom:.6rem; }
-  .hmi-btn--active{ border-color:var(--cyan) !important; color:var(--cyan); box-shadow:0 0 8px rgba(94,230,208,.25), inset 0 0 6px rgba(94,230,208,.12); }
-  .hmi-btn--green.hmi-btn--active, .hmi-btn--red.hmi-btn--active{ color:inherit; }
-  .hmi-btn:disabled{ opacity:.35; }
   .sfield .sf-v{ text-align:justify; hyphens:auto; -webkit-hyphens:auto; }
   .changelog-mini{ margin-top:1.6rem; max-width:880px; font-family:var(--mono); font-size:.68rem; color:var(--text-dim); letter-spacing:.05em; line-height:2; border:1px dashed var(--panel-border); padding:.8rem 1.1rem; }
   .changelog-mini summary{ color:var(--text-dim); cursor:pointer; letter-spacing:.12em; font-size:.62rem; text-transform:uppercase; }
@@ -478,7 +380,7 @@
     .grain{ opacity:.035; }
     .eyebrow{ margin-bottom:.75rem; font-size:.58rem; line-height:1.6; letter-spacing:.14em; }
     .section-title{ margin-bottom:1.5rem; font-size:clamp(1.8rem,9vw,2.35rem); }
-    .btn, .tab-btn, .hmi-btn{ min-height:44px; }
+    .btn, .tab-btn{ min-height:44px; }
 
     #boot .boot-box{ width:calc(100% - 2.4rem); min-width:0; font-size:.67rem; line-height:1.5; }
     #mode-toggle{
@@ -499,7 +401,7 @@
     .hero__name{ font-size:clamp(1.25rem,7.8vw,2.5rem); line-height:1.08; }
     .hero__name-desktop{ display:none; }
     .hero__name-mobile{ display:inline; }
-    .hero__title{ margin-top:.9rem; font-size:clamp(.78rem,4vw,.98rem); line-height:1.6; }
+    .hero__title{ margin-top:.9rem; font-size:clamp(.64rem,2.8vw,.82rem); line-height:1.6; }
     .hero__tagline{ margin-top:1.1rem; padding:.9rem 1rem; font-size:.9rem; line-height:1.6; }
     .hero__actions{ display:grid; grid-template-columns:1fr 1fr; width:100%; margin-top:1rem; gap:.5rem; }
     .hero__actions .btn{ min-width:0; padding:.55rem .5rem; font-size:.58rem; text-align:center; }
@@ -513,12 +415,7 @@
     .fs-exit{ top:max(.75rem,env(safe-area-inset-top)); right:max(.75rem,env(safe-area-inset-right)); min-height:44px; }
     body.hero-fs .hero{ height:100svh; height:100dvh; min-height:0; }
 
-    .hmi{ padding:.75rem; }
-    .hmi__row{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.45rem; }
-    .hmi__row .hmi-btn{ min-width:0; padding:.6rem .25rem; font-size:.56rem; letter-spacing:.06em; }
-    .hmi__lamps{ justify-content:space-between; flex-wrap:wrap; gap:.65rem 1rem; }
-    .twin-frame{ padding:.65rem; gap:.75rem; overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; }
-    .twin-frame::before, .proj__viz::before{
+    .proj__viz::before{
       content:'SWIPE DIAGRAM HORIZONTALLY';
       position:sticky;
       left:0;
@@ -532,11 +429,10 @@
       letter-spacing:.1em;
       color:var(--text-dim);
     }
-    #twin-svg{ min-width:620px; align-self:flex-start; touch-action:pan-x; }
-    .twin-dash{ font-size:.62rem; }
-    .twin-caption{ font-size:.61rem; letter-spacing:.06em; }
-    .dt-explainer, .deploy-note, .proj__info p, .sfield .sf-v{ text-align:left; text-justify:auto; hyphens:none; -webkit-hyphens:none; }
-    .dt-explainer{ margin-top:2rem; font-size:.9rem; line-height:1.7; }
+    #a-twin .proj__viz::before{ display:none; }
+    #twin-svg{ width:100%; min-width:0; align-self:flex-start; touch-action:auto; }
+    .twin-project{ min-height:190px; }
+    .deploy-note, .proj__info p, .sfield .sf-v{ text-align:left; text-justify:auto; hyphens:none; -webkit-hyphens:none; }
     .mirror-copy{ gap:1rem; margin-top:2rem; }
     .mirror-box{ padding:1.3rem; }
     .log-line{ margin-top:2rem; padding-left:1rem; font-size:.78rem; line-height:1.7; }
@@ -718,7 +614,7 @@
           <div class="sfield sfield--built"><p class="sf-k">What I built</p><p class="sf-v">A two-way digital twin in Tecnomatix Plant Simulation over OPC UA, plus a web KPI dashboard with dual-channel control.</p></div>
           <div class="sfield sfield--tools"><p class="sf-k">Tools</p><div class="skills__tags"><span class="tag">Tecnomatix</span><span class="tag">OPC UA</span><span class="tag">Web dashboard</span></div></div>
         </div>
-        <div class="st-impact"><span class="imp-k">Impact</span><span class="imp-v">Real-time bidirectional control and monitoring — the demo at the top of this page.</span></div>
+        <div class="st-impact"><span class="imp-k">Impact</span><span class="imp-v">Real-time bidirectional control and monitoring — now shown as the live model in Project 06.</span></div>
         <p class="st-learned">Sync latency is the truth-teller of any digital twin.</p>
       </div>
     </div>
@@ -754,15 +650,16 @@
   <h2 class="section-title reveal">Spec sheet</h2>
   <div class="knowledge__grid">
     <div class="skills reveal">
+      <div class="skills__group"><p class="skills__label">AI &amp; Agentic Systems</p><div class="skills__tags"><span class="tag">RAG</span><span class="tag">MCP</span><span class="tag">Agentic Workflows</span><span class="tag">LLM Agents</span><span class="tag">Local LLMs</span><span class="tag">Vector Databases</span><span class="tag">AI-Assisted Validation</span></div></div>
+      <div class="skills__group"><p class="skills__label">Programming</p><div class="skills__tags"><span class="tag">C#</span><span class="tag">.NET Framework 4.8</span><span class="tag">.NET 8.0</span><span class="tag">Python</span></div></div>
       <div class="skills__group"><p class="skills__label">Virtual Commissioning</p><div class="skills__tags"><span class="tag">fe.screen-sim</span><span class="tag">Process Simulate</span><span class="tag">ISG-Virtuos</span><span class="tag">Simit</span></div></div>
       <div class="skills__group"><p class="skills__label">Control Engineering</p><div class="skills__tags"><span class="tag">Siemens TIA Portal</span><span class="tag">S7-1500</span><span class="tag">S7-300</span><span class="tag">WinCC SIMATIC Manager</span></div></div>
       <div class="skills__group"><p class="skills__label">Robot Simulation</p><div class="skills__tags"><span class="tag">Kuka OfficeLite</span><span class="tag">KUKA WorkVisual</span><span class="tag">ABB RobotStudio</span></div></div>
-      <div class="skills__group"><p class="skills__label">Programming &amp; AI</p><div class="skills__tags"><span class="tag">C# / .NET</span><span class="tag">Python</span><span class="tag">PLC Programming</span><span class="tag">RAG Workflows</span><span class="tag">Vector DBs</span><span class="tag">MCP Server</span></div></div>
       <div class="skills__group"><p class="skills__label">Business Tools &amp; Languages</p><div class="skills__tags"><span class="tag">Siemens Teamcenter</span><span class="tag">SAP ERP</span><span class="tag">English C1</span><span class="tag">German B1</span></div></div>
     </div>
     <div class="education reveal">
-      <div class="edu-card"><p class="edu-card__tag">DEGREE 01 · GRADE 1.9</p><h3>M.Sc. Systems Engineering for Manufacturing</h3><p class="desc">Otto von Guericke University Magdeburg · 10/2022 – 12/2024. Thesis: component-based automation framework for PLC testing in virtual commissioning (→ Project 01).</p></div>
-      <div class="edu-card"><p class="edu-card__tag">DEGREE 02 · GRADE 2.0</p><h3>B.Eng. Mechanical Engineering</h3><p class="desc">Visvesvaraya Technological University · 08/2016 – 08/2020. Electric vehicle for agricultural applications; 4-axis robot for high-risk manufacturing environments.</p></div>
+      <div class="edu-card"><p class="edu-card__tag">DEGREE 01 · GERMAN GRADE 1.9</p><h3>M.Sc. Systems Engineering for Manufacturing</h3><p class="desc">Otto von Guericke University Magdeburg · 10/2022 – 12/2024. Thesis: component-based automation framework for PLC testing in virtual commissioning (→ Project 01).</p></div>
+      <div class="edu-card"><p class="edu-card__tag">DEGREE 02 · GERMAN GRADE 2.0</p><h3>B.Eng. Mechanical Engineering</h3><p class="desc">Visvesvaraya Technological University · 08/2016 – 08/2020. Electric vehicle for agricultural applications; 4-axis robot for high-risk manufacturing environments.</p></div>
     </div>
   </div>
   <div class="mirror-copy">
@@ -1150,8 +1047,8 @@
       <div class="tabs"><button class="tab-btn on" data-tab="simple">Simple</button><button class="tab-btn" data-tab="arch">Architecture</button><button class="tab-btn" data-tab="impact">Impact</button></div>
       <div class="tab-stack">
       <div class="tab-pane on" data-pane="simple">
-        <p>A physical miniature manufacturing line in the university lab, mirrored one-to-one in <span class="hl">Tecnomatix Plant Simulation</span> over <span class="hl">OPC UA</span> — it's the live system running at the top of this page, HMI and all.</p>
-        <p>Genuinely bidirectional: stop the physical model and the simulation halts; start from the simulation and the physical line spins up.</p>
+        <p>A physical miniature manufacturing line in the university lab, mirrored one-to-one in <span class="hl">Tecnomatix Plant Simulation</span> over <span class="hl">OPC UA</span>. The compact live model runs automatically alongside this project.</p>
+        <p>Genuinely bidirectional: state changes from the physical line update the simulation, while virtual commands can drive the physical system.</p>
       </div>
       <div class="tab-pane" data-pane="arch">
         <p><span class="arch-k">Connectivity:</span> OPC UA server/client linking the physical line's PLC with Plant Simulation.</p>
@@ -1162,28 +1059,23 @@
         <p>A working research foundation for shop-floor development — live energy monitoring, process insight, and a hands-on digital twin for students and researchers.</p>
       </div>
       </div>
-      <p style="font-family:var(--mono); font-size:.78rem; color:var(--accent);">↓ Live demo in the About section.</p>
       <div class="proj__tags"><span class="tag">Tecnomatix</span><span class="tag">OPC UA</span><span class="tag">KPI Dashboard</span><span class="tag">Digital Twin</span></div>
     </div>
-    <div class="proj__viz" style="justify-content:center; align-items:center;">
-      <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
-        <rect x="60" y="60" width="220" height="140" fill="#141a21" stroke="#f2a63a"/>
-        <text x="170" y="86" fill="#f2a63a" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle" letter-spacing="1">PHYSICAL LINE</text>
-        <rect x="90" y="130" width="160" height="10" fill="#39434f"/>
-        <rect x="100" y="112" width="24" height="18" fill="#f2a63a"/>
-        <rect x="360" y="60" width="220" height="140" fill="#141a21" stroke="#5ee6d0"/>
-        <text x="470" y="86" fill="#5ee6d0" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle" letter-spacing="1">PLANT SIMULATION</text>
-        <rect x="390" y="130" width="160" height="10" fill="none" stroke="#5ee6d0"/>
-        <rect x="400" y="112" width="24" height="18" fill="none" stroke="#5ee6d0"/>
-        <path d="M280 110 L360 110" stroke="#f2a63a" stroke-width="1.4"/>
-        <path d="M360 150 L280 150" stroke="#5ee6d0" stroke-width="1.4"/>
-        <text x="320" y="102" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">STATE →</text>
-        <text x="320" y="168" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">← CONTROL</text>
-        <text x="320" y="240" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="2">OPC UA · TWO-WAY INTERACTION</text>
-      </svg>
-      <div class="viz-bar" style="width:100%;">
-        <span class="viz-status">ARCHITECTURE VIEW · LIVE DEMO IN ABOUT ↓</span>
-        <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">OPEN TWIN</button>
+    <div class="proj__viz twin-project-viz">
+      <div class="twin-project">
+        <svg id="twin-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" aria-label="Automatically running physical and virtual production line digital twin">
+          <text x="30" y="30" fill="#f2a63a" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2">PHYSICAL MODEL</text>
+          <g id="phys-scene"></g>
+          <line x1="500" y1="44" x2="500" y2="280" stroke="rgba(139,149,161,0.3)" stroke-dasharray="4 5"/>
+          <text x="500" y="30" fill="#8b95a1" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="2">OPC UA</text>
+          <circle id="sync-dot-a" r="4" fill="#5ee6d0" opacity="0"/>
+          <circle id="sync-dot-b" r="4" fill="#f2a63a" opacity="0"/>
+          <text x="970" y="30" fill="#5ee6d0" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2" text-anchor="end">PLANT SIMULATION</text>
+          <g id="virt-scene"></g>
+        </svg>
+      </div>
+      <div class="viz-bar">
+        <span class="viz-status" id="twin-status">AUTO · PHYSICAL ⇄ VIRTUAL · CYCLE 0 · SYNC 12 MS</span>
       </div>
     </div>
   </article>
@@ -1231,9 +1123,11 @@
 <footer class="contact" id="contact">
   <p class="eyebrow reveal"><span class="dot"></span>STATUS: READY FOR NEW SIGNAL</p>
   <h2 class="section-title reveal">Let's sync up</h2>
-  <a class="contact__email reveal" href="mailto:ambaprasad.hegde@gmail.com">ambaprasad.hegde@gmail.com</a>
+  <div class="contact__primary reveal">
+    <a class="contact__email" href="mailto:ambaprasad.hegde@gmail.com">ambaprasad.hegde@gmail.com</a>
+    <a class="contact__phone" href="tel:+4915758273124">+49 157 58273124</a>
+  </div>
   <div class="contact__links reveal">
-    <a href="tel:+4915758273124">+49 157 58273124</a>
     <a href="https://www.linkedin.com/in/ambaprasad-hegde/" target="_blank" rel="noopener">LinkedIn</a>
     <a href="https://github.com/prasadGhegde" target="_blank" rel="noopener">GitHub</a>
     <a href="Ambaprasad-Hegde-CV.pdf" target="_blank" rel="noopener">CV · PDF</a>
@@ -1248,8 +1142,9 @@
       05 · SUDO — for those who type before they think<br>
       06 · HANAMI — this portfolio had a previous life. the changelog remembers, if you're persistent
       <details class="changelog-mini">
-        <summary id="changelog-summary">// Portfolio changelog — v1.5</summary>
-        <span class="ver">v1.5<span class="cur">CURRENT</span></span> + refined positioning · + project and experience shortcuts · + CV and phone contact<br>
+        <summary id="changelog-summary">// Portfolio changelog — v1.6</summary>
+        <span class="ver">v1.6<span class="cur">CURRENT</span></span> + streamlined auto-running digital twin · + AI-first skill stack · + refined hero and contact layout<br>
+        <span class="ver">v1.5</span> + refined positioning · + project and experience shortcuts · + CV and phone contact<br>
         <span class="ver">v1.4</span> + reordered information flow · + removed repetitive unit datasheet · + relocated changelog<br>
         <span class="ver">v1.3</span> + all six projects reviewed &amp; approved · + corrected Project 02/04 wording · + GitHub linked · + institution added<br>
         <span class="ver">v1.2</span> + real coastline data + lit 3D globe · + choreographed hero sequence · + one-row HMI panel · + career bridge layer (v1.5)<br>
@@ -1287,7 +1182,7 @@
 
 <script>
 // ===== PAGE FLOW =====
-['hero','work','experience','deploy','skills','review','about','contact'].forEach(id=>{
+['hero','work','experience','deploy','skills','review','contact'].forEach(id=>{
   const section=document.getElementById(id);
   const boundary=document.getElementById('review-pdf');
   if(section&&boundary)document.body.insertBefore(section,boundary);
@@ -2176,7 +2071,7 @@ document.querySelectorAll('.station__head').forEach(h=>{
 })();
 </script>
 <script>
-// ===== TWIN SIM (About) =====
+// ===== AUTO-RUNNING DIGITAL TWIN (PROJECT 06) =====
 (function(){
   const NS='http://www.w3.org/2000/svg';
   function S(parent,tag,attrs){const el=document.createElementNS(NS,tag);for(const k in attrs)el.setAttribute(k,attrs[k]);parent.appendChild(el);return el;}
@@ -2209,15 +2104,13 @@ document.querySelectorAll('.station__head').forEach(h=>{
   const D=id=>document.getElementById(id);
 
   const st={
-    mode:'auto', running:true, fast:false,
     px:0, py:0, opac:1,
     phase:'move', t:0, scanned:false, drilled:false, willReject:false,
     drillOff:0, drillPhase:'idle', drillT:0,
-    ok:0, rej:0, vel:0
+    ok:0, rej:0
   };
-  let fwdHeld=false, backHeld=false;
-  const POS_B=103, POS_C=206, POS_END=340, PX_MAX=348;
-  const speed=()=>0.85*(st.fast?2.1:1);
+  const POS_B=103, POS_C=206, POS_END=340;
+  const speed=()=>0.85;
 
   function render(){
     [P,V].forEach(s=>{
@@ -2227,36 +2120,28 @@ document.querySelectorAll('.station__head').forEach(h=>{
       s.mark.setAttribute('opacity',st.drilled?1:0);
     });
   }
-  function setConv(active){
-    for(let i=1;i<=4;i++){
-      const el=D('d-c'+i);
-      if(!st.running){el.textContent='OFF';el.className='v off';}
-      else if(i===active){el.textContent='RUN';el.className='v on';}
-      else{el.textContent='IDLE';el.className='v';}
-    }
+  function updateStatus(latency){
+    D('twin-status').textContent='AUTO · PHYSICAL ⇄ VIRTUAL · CYCLE '+st.ok+' · REJECT '+st.rej+' · SYNC '+latency+' MS';
   }
-  const convOf=x=>x<POS_B?1:x<POS_C?2:x<POS_END?3:4;
   function respawn(){
     st.px=0;st.py=0;st.opac=1;st.phase='move';st.scanned=false;st.drilled=false;
   }
   function stepDrill(){
     switch(st.drillPhase){
       case 'down':
-        st.drillOff+=1.5*(st.fast?1.6:1);
+        st.drillOff+=1.5;
         if(st.drillOff>=26){st.drillOff=26;st.drillPhase='hold';st.drillT=0;}
         break;
       case 'hold':
         st.drillT+=1/60;
-        if(st.drillT>(st.fast?.45:.9))st.drillPhase='up';
+        if(st.drillT>.9)st.drillPhase='up';
         break;
       case 'up':
-        st.drillOff-=1.5*(st.fast?1.6:1);
+        st.drillOff-=1.5;
         if(st.drillOff<=0){
           st.drillOff=0;st.drillPhase='idle';
-          D('d-drill').textContent='IDLE';D('d-drill').className='v';
-          // did we drill the part?
           if(st.px>=POS_C-14&&st.px<=POS_C+14&&st.opac>0){st.drilled=true;}
-          if(st.mode==='auto'){st.phase='move';}
+          st.phase='move';
         }
         break;
     }
@@ -2264,29 +2149,14 @@ document.querySelectorAll('.station__head').forEach(h=>{
   function startDrill(){
     if(st.drillPhase!=='idle')return;
     st.drillPhase='down';
-    D('d-drill').textContent='ACTIVE';D('d-drill').className='v warn';
   }
 
   function frame(){
     requestAnimationFrame(frame);
-    if(!st.running){render();return;}
     if(st.drillPhase!=='idle')stepDrill();
-
-    if(st.mode==='manual'){
-      st.vel=(fwdHeld?1:0)+(backHeld?-1:0);
-      if(st.drillPhase!=='idle')st.vel=0;
-      st.px=Math.max(0,Math.min(PX_MAX,st.px+st.vel*speed()));
-      st.py=0;st.opac=1;
-      setConv(st.vel!==0?convOf(st.px):0);
-      if(st.vel!==0){D('d-insp').textContent='—';D('d-insp').className='v';}
-      render();return;
-    }
-
-    // AUTO
     switch(st.phase){
       case 'move':
         st.px+=speed();
-        setConv(convOf(st.px));
         if(st.px>=POS_B&&!st.scanned){st.scanned=true;st.phase='scan';st.t=0;st.willReject=Math.random()<.28;st.px=POS_B;}
         else if(st.px>=POS_C&&!st.drilled){st.px=POS_C;st.phase='drill';startDrill();}
         else if(st.px>=POS_END){st.phase='exit';st.t=0;}
@@ -2294,16 +2164,13 @@ document.querySelectorAll('.station__head').forEach(h=>{
       case 'scan':
         st.t+=1/60;
         [P,V].forEach(s=>s.beam.setAttribute('opacity',Math.sin(st.t*30)>0?1:.15));
-        D('d-insp').textContent='SCANNING';D('d-insp').className='v warn';
-        if(st.t>(st.fast?.4:.8)){
+        if(st.t>.8){
           [P,V].forEach(s=>s.beam.setAttribute('opacity',.25));
           if(st.willReject){
             st.phase='reject';st.t=0;
-            D('d-insp').textContent='REJECT';D('d-insp').className='v err';
-            st.rej++;D('d-rej').textContent=st.rej;
+            st.rej++;updateStatus(12);
           } else {
             st.phase='move';
-            D('d-insp').textContent='PASS';D('d-insp').className='v on';
           }
         }
         break;
@@ -2318,95 +2185,30 @@ document.querySelectorAll('.station__head').forEach(h=>{
       case 'exit':
         st.t+=1/60;
         st.px+=speed();st.opac=Math.max(0,1-st.t*1.7);
-        if(st.opac<=0){st.ok++;D('d-ok').textContent=st.ok;respawn();}
+        if(st.opac<=0){st.ok++;updateStatus(12);respawn();}
         break;
     }
     render();
   }
   requestAnimationFrame(frame);
 
-  setInterval(()=>{
-    if(!st.running)return;
-    D('d-energy').textContent=((st.fast?5.1:3.8)+Math.random()*.9).toFixed(2)+' kW';
-    D('d-tp').textContent=((st.fast?58:34)+Math.floor(Math.random()*5))+'/h';
-    D('d-cycle').textContent=((st.fast?4.6:8)+Math.random()*.9).toFixed(1)+' s';
-    D('d-lat').textContent=9+Math.floor(Math.random()*8);
-  },1200);
-
-  function syncPulse(fromPhys,cb){
+  function syncPulse(fromPhys){
     const dot=D(fromPhys?'sync-dot-b':'sync-dot-a');
     const x0=fromPhys?440:560,x1=fromPhys?560:440;
     dot.setAttribute('cy',150);let p=0;
     const iv=setInterval(()=>{
       p+=.06;dot.setAttribute('opacity',p<1?1:0);
       dot.setAttribute('cx',x0+(x1-x0)*Math.min(p,1));
-      if(p>=1){clearInterval(iv);dot.setAttribute('opacity',0);cb&&cb();}
+      if(p>=1){clearInterval(iv);dot.setAttribute('opacity',0);}
     },16);
   }
-
-  function setMode(m){
-    st.mode=m;
-    const auto=m==='auto';
-    D('twin-auto-btn').classList.toggle('hmi-btn--active',auto);
-    D('twin-man-btn').classList.toggle('hmi-btn--active',!auto);
-    ['twin-fwd','twin-back','twin-drill'].forEach(id=>D(id).disabled=auto);
-    D('lamp-auto').className='lamp'+(auto?' lamp--amber':'');
-    D('d-mode').textContent=auto?'AUTO':'MANUAL';
-    D('d-mode').className='v '+(auto?'warn':'on');
-    if(auto){
-      // resume clean auto cycle from wherever the part is
-      st.py=0;st.opac=1;
-      st.scanned=st.px>=POS_B;st.phase='move';
-    }
-  }
-  D('twin-auto-btn').addEventListener('click',()=>{setMode('auto');toast('LINE 01','Mode: AUTO — cycle resumes.');});
-  D('twin-man-btn').addEventListener('click',()=>{setMode('manual');toast('LINE 01','Mode: MANUAL — jog with FWD/BWD, fire DRILL yourself.');});
-
-  D('twin-stop').addEventListener('click',()=>{
-    if(!st.running)return;
-    D('d-state').textContent='STOPPING';D('d-state').className='v warn';
-    syncPulse(true,()=>{
-      st.running=false;setConv(0);
-      D('d-state').textContent='STOPPED';D('d-state').className='v err';
-      D('lamp-run').className='lamp';D('lamp-fault').className='lamp lamp--red';
-    });
-  });
-  D('twin-start').addEventListener('click',()=>{
-    if(st.running)return;
-    D('d-state').textContent='STARTING';D('d-state').className='v warn';
-    syncPulse(false,()=>{
-      st.running=true;
-      D('d-state').textContent='RUNNING';D('d-state').className='v on';
-      D('lamp-run').className='lamp lamp--on';D('lamp-fault').className='lamp';
-    });
-  });
-  D('twin-reset').addEventListener('click',()=>{
-    st.ok=0;st.rej=0;D('d-ok').textContent='0';D('d-rej').textContent='0';respawn();render();
-    toast('LINE 01','Counters reset. Part back at A.');
-  });
-  D('twin-fast').addEventListener('click',()=>{
-    st.fast=!st.fast;
-    D('twin-fast').classList.toggle('hmi-btn--active',st.fast);
-    toast('LINE 01','Speed: '+(st.fast?'FAST (×2.1)':'NOMINAL'));
-  });
-  D('twin-drill').addEventListener('click',()=>{
-    if(st.mode!=='manual')return;
-    if(!st.running){toast('LINE 01','Line stopped — press START first.');return;}
-    startDrill();
-  });
-  function hold(id,set){
-    const el=D(id);
-    const on=e=>{e.preventDefault&&e.preventDefault();set(true);};
-    const off=()=>set(false);
-    el.addEventListener('pointerdown',on);
-    window.addEventListener('pointerup',off);
-    el.addEventListener('pointerleave',off);
-    el.addEventListener('touchstart',on,{passive:false});
-    el.addEventListener('touchend',off);
-  }
-  hold('twin-fwd',v=>fwdHeld=v);
-  hold('twin-back',v=>backHeld=v);
-  setMode('auto');
+  let syncDirection=false;
+  setInterval(()=>{
+    syncDirection=!syncDirection;
+    syncPulse(syncDirection);
+    updateStatus(9+Math.floor(Math.random()*8));
+  },1200);
+  updateStatus(12);
 })();
 
 // ===== VIZ 1: COMPONENT TEST SUITE =====
