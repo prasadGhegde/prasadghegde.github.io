@@ -157,9 +157,8 @@
   .skills__label{ font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim); margin-bottom:.7rem; }
   .skills__tags{ display:flex; flex-wrap:wrap; gap:.5rem; }
   .education{ margin-top:3.5rem; padding-top:2rem; border-top:1px solid var(--panel-border); }
-  .education__heading{ display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; margin-bottom:1.25rem; }
+  .education__heading{ margin-bottom:1.25rem; }
   .education__heading .skills__label{ margin:0; color:var(--accent); }
-  .education__heading p:last-child{ max-width:55ch; color:var(--text-dim); font-size:.88rem; font-weight:300; line-height:1.6; text-align:right; }
   .education__grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.4rem; align-items:stretch; }
   .edu-card{ border:1px solid var(--panel-border); border-top:2px solid var(--amber); background:var(--bg-2); padding:1.7rem; display:flex; flex-direction:column; min-height:100%; }
   .edu-card__top{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
@@ -500,8 +499,6 @@
 
     .skills{ grid-template-columns:1fr; gap:1.35rem; }
     .education{ margin-top:2.5rem; padding-top:1.5rem; }
-    .education__heading{ display:block; }
-    .education__heading p:last-child{ margin-top:.65rem; text-align:left; }
     .education__grid{ grid-template-columns:1fr; gap:1rem; }
     .edu-card{ padding:1.2rem; }
     .edu-card__top{ align-items:flex-start; }
@@ -705,7 +702,7 @@
       <div class="skills__group"><p class="skills__label">Business Tools &amp; Languages</p><div class="skills__tags"><span class="tag">Siemens Teamcenter</span><span class="tag">SAP ERP</span><span class="tag">English C1</span><span class="tag">German B1</span></div></div>
     </div>
     <div class="education reveal">
-      <div class="education__heading"><p class="skills__label">Education</p><p>Two complementary foundations: physical product engineering and systems-level manufacturing automation.</p></div>
+      <div class="education__heading"><p class="skills__label">Education</p></div>
       <div class="education__grid">
         <article class="edu-card">
           <div class="edu-card__top"><p class="edu-card__tag">Degree 01</p><span class="edu-card__grade">German grade 1.9</span></div>
@@ -730,7 +727,7 @@
       </div>
     </div>
   </div>
-  <p class="log-line reveal">&gt; Combining physical-system understanding, automation engineering and software to build solutions grounded in how production systems actually operate...</p>
+  <p class="log-line reveal">&gt; Every production line exists twice — once in code, once in steel. I'm the engineer who makes sure both versions agree...</p>
 </section>
 
 <section class="projects" id="work">
