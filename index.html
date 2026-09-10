@@ -82,7 +82,7 @@
   .hero__title{ font-family:var(--mono); font-size:clamp(.95rem,1.6vw,1.15rem); color:var(--steel); margin-top:1.2rem; letter-spacing:.04em; text-shadow:0 2px 14px rgba(13,17,23,.95); }
   .hero__title-line{ display:block; white-space:nowrap; }
   .hero__title-specialty{ margin-top:.28rem; }
-  .hero__tagline{ margin-top:1.6rem; max-width:54ch; color:var(--steel); font-weight:400; font-size:1.02rem; line-height:1.75;
+  .hero__tagline{ margin-top:1.6rem; max-width:54ch; color:var(--steel); font-weight:400; font-size:1.02rem; line-height:1.75; text-align:justify; text-justify:inter-word;
     background:rgba(13,17,23,.78); border:1px solid var(--panel-border); border-left:2px solid var(--accent);
     padding:1.1rem 1.3rem; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
   .hero__tagline .hl{ color:var(--text); font-weight:500; }
@@ -264,7 +264,7 @@
   <div class="hero__content">
     <p class="eyebrow"><span class="dot"></span>Munich, Germany</p>
     <h1 class="hero__name" aria-label="Ambaprasad Ganapathi Hegde"><span class="hero__name-desktop" aria-hidden="true">Ambaprasad&nbsp;Ganapathi<br>Hegde</span><span class="hero__name-mobile" aria-hidden="true">Ambaprasad<br>Ganapathi Hegde</span></h1>
-    <p class="hero__title"><span class="hero__title-line">Specialist in Digitalisation &amp; Automation</span><span class="hero__title-line hero__title-specialty">Virtual Commissioning</span></p>
+    <p class="hero__title"><span class="hero__title-line">Specialist for Automation and Digitalisation</span><span class="hero__title-line hero__title-specialty">| Virtual Commissioning</span></p>
     <p class="hero__tagline">I’m the engineer behind <span class="hl">patent-pending PLC test automation</span> that reduced testing costs by <span class="hl">22%</span> and testing cycles by <span class="hl">28%</span>. I help build <span class="hl">production-grade software and AI/LLM workflows</span> that work reliably across multidisciplinary engineering data in industrial automation.</p>
     <nav class="hero__actions" aria-label="Portfolio shortcuts">
       <a class="btn btn--accent" href="#work">View projects</a>
@@ -290,12 +290,12 @@
   @keyframes sitehalo{ 0%{opacity:.7;} 70%{opacity:0;} 100%{opacity:0;} }
 
   .career-timeline{ position:relative; max-width:1180px; display:grid; gap:1.25rem; }
-  .career-timeline::before{ content:''; position:absolute; top:1.35rem; bottom:1.35rem; left:174px; width:1px; background:linear-gradient(var(--accent),var(--panel-border) 20%,var(--panel-border) 80%,var(--amber)); }
+  .career-timeline::before{ content:''; position:absolute; top:1.35rem; bottom:1.35rem; left:174px; width:1px; background:var(--accent); opacity:.65; }
   .career-entry{ position:relative; display:grid; grid-template-columns:145px minmax(0,1fr); gap:58px; align-items:start; }
   .career-date{ padding-top:1.45rem; font-family:var(--mono); font-size:.64rem; line-height:1.55; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); text-align:right; }
   .career-date strong{ display:block; color:var(--text); font-weight:500; }
   .career-node{ position:absolute; left:168px; top:1.55rem; z-index:2; width:13px; height:13px; border:2px solid var(--accent); border-radius:50%; background:var(--bg-2); box-shadow:0 0 0 5px var(--bg-2); }
-  .career-entry:last-child .career-node{ border-color:var(--amber); }
+  .career-entry:last-child .career-node{ border-color:var(--accent); }
   .career-card{ border:1px solid var(--panel-border); background:var(--bg); padding:1.45rem 1.55rem; min-width:0; }
   .career-card--featured{ border-top:2px solid var(--accent); background:linear-gradient(145deg,rgba(94,230,208,.045),transparent 34%),var(--bg); padding:1.7rem; }
   .career-card__header{ display:flex; align-items:center; gap:.95rem; }
@@ -316,7 +316,6 @@
   .career-impact div+div{ border-left:1px solid var(--panel-border); }
   .career-impact strong{ display:block; font-family:var(--display); font-size:1.08rem; color:var(--green); }
   .career-impact span{ display:block; margin-top:.18rem; font-family:var(--mono); font-size:.55rem; line-height:1.45; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); }
-  .career-theme{ margin-top:1rem; font-family:var(--mono); font-size:.58rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
   .career-card h3.career-title{ margin-top:.35rem; font-family:var(--display); font-size:1.08rem; }
   .career-copy{ max-width:82ch; margin-top:.55rem; color:var(--text-dim); font-size:.87rem; font-weight:300; line-height:1.7; }
 
@@ -486,7 +485,7 @@
     .deploy-map{ padding:.55rem; }
     #globe-canvas{ touch-action:pan-y; }
     .globe-hint{ min-height:2rem; display:flex; align-items:center; justify-content:center; font-size:0; line-height:1.5; }
-    .globe-hint::after{ content:'SWIPE HORIZONTALLY TO SPIN · SITES PULSING'; font-size:.54rem; }
+    .globe-hint::after{ content:'SWIPE HORIZONTALLY TO SPIN'; font-size:.54rem; }
     .deploy-list{ gap:.7rem; }
     .site{ padding:.85rem 1rem; }
     .deploy-note{ margin-top:1.3rem; font-size:.88rem; line-height:1.7; }
@@ -592,12 +591,12 @@
 </style>
 
 <section class="deploy" id="deploy">
-  <p class="eyebrow reveal">// Field Deployments — Gen6 HV Battery Production</p>
+  <p class="eyebrow reveal">// Gen6 High Voltage Battery Production Lines</p>
   <h2 class="section-title reveal">Projects across three continents</h2>
   <div class="deploy-flex reveal">
     <div class="deploy-map" id="globe-holder">
       <canvas id="globe-canvas"></canvas>
-      <p class="globe-hint">DRAG TO SPIN · SCROLL TO ZOOM · SITES PULSING</p>
+      <p class="globe-hint">DRAG TO SPIN · SCROLL TO ZOOM</p>
     </div>
     <div class="deploy-list">
       <div class="site"><p class="s-name">Munich, Germany</p><p class="s-meta"><span class="s-flag">★ Home base</span> · BMW VC &amp; Digitalization</p></div>
@@ -607,7 +606,7 @@
       <div class="site"><p class="s-name">Shenyang, China</p><p class="s-meta"><span class="s-flag">HiL / SiL</span> · Gen6 HV Battery VC</p></div>
     </div>
   </div>
-  <p class="deploy-note reveal">I've supported <span class="hl">HiL and SiL virtual commissioning projects for Gen6 high-voltage battery production lines</span> across these sites — validating PLC software virtually so that lines on three continents start up right, plus maintaining the digital laboratory infrastructure (PLCs, virtual robot controllers, simulation models, industrial networks) behind them.</p>
+  <p class="deploy-note reveal">I've supported <span class="hl">HiL and SiL virtual commissioning projects for Gen6 high-voltage battery production lines for the NeuKlasse range of BMW cars</span> across these sites — validating PLC software virtually so that lines on three continents start up right. These new Gen6 lines support the NeuKlasse range and are part of one of BMW's fastest production ramp-ups in history; I also maintain the digital laboratory infrastructure (PLCs, virtual robot controllers, simulation models, industrial networks) behind them.</p>
 </section>
 
 <section class="experience" id="experience">
@@ -620,7 +619,7 @@
       <div class="career-card career-card--featured">
         <header class="career-card__header">
           <svg class="st-badge" viewBox="0 0 30 30" role="img" aria-label="BMW"><circle cx="15" cy="15" r="13" fill="none" stroke="#8b95a1" stroke-width="1.6"/><path d="M15 4 A11 11 0 0 1 26 15 L15 15 Z" fill="#5b8fd6" opacity=".85"/><path d="M15 26 A11 11 0 0 1 4 15 L15 15 Z" fill="#5b8fd6" opacity=".85"/><path d="M26 15 A11 11 0 0 1 15 26 L15 15 Z" fill="#dfe6ec" opacity=".85"/><path d="M4 15 A11 11 0 0 1 15 4 L15 15 Z" fill="#dfe6ec" opacity=".85"/></svg>
-          <div><p class="career-company">BMW Group</p><p class="career-context">Virtual commissioning · Digitalization · Gen6 battery production</p></div>
+          <div><p class="career-company">BMW AG</p><p class="career-context">Industrial Automation Software Development · AI Workflows</p></div>
           <span class="career-current">CURRENT</span>
         </header>
         <div class="career-roles">
@@ -633,7 +632,7 @@
             <p class="career-role__copy">Designed the reusable architecture: component-level test definitions connected to real PLC control data and virtual production models.</p>
           </div>
           <div class="career-role">
-            <div class="career-role__meta"><h3>Virtual Commissioning Intern</h3><span class="career-role__date">01/2024 — 07/2024</span></div>
+            <div class="career-role__meta"><h3>Intern</h3><span class="career-role__date">01/2024 — 07/2024</span></div>
             <p class="career-role__copy">Established the foundation through engineering-data validation, test KPI visibility and digital-laboratory infrastructure.</p>
           </div>
         </div>
@@ -653,7 +652,6 @@
           <svg class="st-badge" viewBox="0 0 30 30" role="img" aria-label="OVGU"><rect x="2" y="2" width="26" height="26" fill="none" stroke="#8b95a1" stroke-width="1.4"/><rect x="2" y="2" width="26" height="8" fill="#c22f5e" opacity=".8"/><text x="15" y="23" fill="#c7ccd1" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle" font-weight="bold">OvGU</text></svg>
           <div><p class="career-company">OVGU Magdeburg</p><p class="career-context">Research · Digital twin</p></div>
         </header>
-        <p class="career-theme">Connected systems</p>
         <h3 class="career-title">Research Assistant</h3>
         <p class="career-copy">Built a bidirectional digital twin of a miniature production line, connecting Plant Simulation, OPC UA and a web-based control and KPI layer.</p>
       </div>
@@ -665,9 +663,8 @@
       <div class="career-card">
         <header class="career-card__header">
           <svg class="st-badge" viewBox="0 0 30 30" role="img" aria-label="HCL"><rect x="2" y="2" width="26" height="26" fill="none" stroke="#8b95a1" stroke-width="1.4"/><text x="15" y="19" fill="#5b8fd6" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle" font-weight="bold">HCL</text></svg>
-          <div><p class="career-company">HCL Technologies</p><p class="career-context">Project engineering · Controlled processes</p></div>
+          <div><p class="career-company">HCL Technologies</p><p class="career-context">NPD | Medical Devices | Engineering Design</p></div>
         </header>
-        <p class="career-theme">Engineering delivery</p>
         <h3 class="career-title">Project Engineer</h3>
         <p class="career-copy">Coordinated controlled engineering work across customer, quality and technical teams, building the process discipline required for reliable interdisciplinary delivery.</p>
       </div>
@@ -681,7 +678,6 @@
           <svg class="st-badge" viewBox="0 0 30 30" role="img" aria-label="Coca-Cola"><circle cx="15" cy="15" r="13" fill="#a83232" opacity=".85"/><path d="M5 17 Q11 12 15 16 T25 15" stroke="#f4e9e0" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
           <div><p class="career-company">Coca-Cola</p><p class="career-context">Plant operations · Process improvement</p></div>
         </header>
-        <p class="career-theme">Physical operations</p>
         <h3 class="career-title">Intern Engineer</h3>
         <p class="career-copy">Used shop-floor observation, process mapping and bottleneck analysis to improve loading-area logistics, reducing plant-wide truck turnaround time by 10%.</p>
       </div>
@@ -1249,7 +1245,7 @@
     <article class="review-card reveal">
       <div class="review-card__meta">
         <span>SPECIALIST REFERENCE</span>
-        <span>BMW GROUP · MUNICH</span>
+        <span>BMW AG · MUNICH</span>
       </div>
       <blockquote cite="LOR_Alexander%20Kuhn.pdf">
         <p class="review-card__quote">&ldquo;What impressed me most was his ability to take ownership of challenging topics and deliver results with minimal supervision. ... Over time, he developed from an intern into a trusted engineer who could be relied upon for important technical decisions and demanding projects across the world.&rdquo;</p>
@@ -1265,7 +1261,7 @@
     <article class="review-card reveal">
       <div class="review-card__meta">
         <span>COLLEAGUE REFERENCE</span>
-        <span>BMW GROUP · MUNICH</span>
+        <span>BMW AG · MUNICH</span>
       </div>
       <blockquote cite="LOR_Finke.pdf">
         <p class="review-card__quote">&ldquo;Mr. Hegde impresses with his exceptional grasp of complex concepts and the ability to translate theoretical challenges directly into functioning software. Even in stressful project phases, he consistently maintains an overview, proactively assumes responsibility, and delivers top-tier quality under time pressure.&rdquo;</p>
@@ -1274,7 +1270,7 @@
             <cite class="review-card__name">Florian Finke</cite>
             <button class="btn btn--accent review-pdf-open" type="button" data-pdf-src="LOR_Finke.pdf" data-pdf-title="Letter of Recommendation · Florian Finke" data-pdf-label="REFERENCE // 02">View full letter</button>
           </div>
-          <span class="review-card__role">Control Technology · BMW Group</span>
+          <span class="review-card__role">Control Technology · BMW AG</span>
         </div>
       </blockquote>
     </article>
