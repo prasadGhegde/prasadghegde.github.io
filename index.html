@@ -106,17 +106,6 @@
   .btn:hover{ border-color:var(--accent); color:var(--accent); }
   .btn--accent{ border-color:var(--accent); color:var(--accent); }
   .btn--accent:hover{ background:var(--accent); color:var(--bg); }
-  .mirror-copy{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.6rem; margin-top:2.6rem; max-width:1180px; }
-  .mirror-box{ border:1px solid var(--panel-border); background:var(--bg-2); padding:1.8rem; position:relative; }
-  .mirror-box.phys{ border-top:2px solid var(--amber); }
-  .mirror-box.mid{ border-top:2px solid var(--steel); }
-  .mirror-box.virt{ border-top:2px solid var(--cyan); }
-  .mirror-box .tag-label{ font-family:var(--mono); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; margin-bottom:1rem; }
-  .mirror-box.phys .tag-label{ color:var(--amber); }
-  .mirror-box.mid .tag-label{ color:var(--steel); }
-  .mirror-box.virt .tag-label{ color:var(--cyan); }
-  .mirror-box h3{ font-family:var(--display); font-size:1.22rem; margin-bottom:.8rem; }
-  .mirror-box p{ font-size:.93rem; font-weight:300; line-height:1.75; color:var(--text-dim); }
   .log-line{ margin-top:2.8rem; font-family:var(--mono); font-size:.92rem; line-height:1.85; color:var(--accent); max-width:780px; border-left:2px solid var(--accent); padding-left:1.4rem; transition:color .3s, border-color .3s; text-align:justify; text-justify:inter-word; }
   .log-line::after{ content:'_'; animation:blink 1s step-end infinite; }
 
@@ -162,14 +151,34 @@
   .rail-particle{ position:absolute; left:-4px; width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px 2px var(--accent); opacity:0; }
 
   .knowledge{ background:var(--bg); }
-  .knowledge__grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:4rem; margin-top:1rem; }
-  .skills__group{ margin-bottom:1.7rem; }
+  .knowledge__grid{ max-width:1180px; margin-top:1rem; }
+  .skills{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.6rem 2rem; }
+  .skills__group{ min-width:0; }
   .skills__label{ font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim); margin-bottom:.7rem; }
   .skills__tags{ display:flex; flex-wrap:wrap; gap:.5rem; }
-  .edu-card{ border:1px solid var(--panel-border); background:var(--bg-2); padding:1.6rem; margin-bottom:1.4rem; }
+  .education{ margin-top:3.5rem; padding-top:2rem; border-top:1px solid var(--panel-border); }
+  .education__heading{ display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; margin-bottom:1.25rem; }
+  .education__heading .skills__label{ margin:0; color:var(--accent); }
+  .education__heading p:last-child{ max-width:55ch; color:var(--text-dim); font-size:.88rem; font-weight:300; line-height:1.6; text-align:right; }
+  .education__grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.4rem; align-items:stretch; }
+  .edu-card{ border:1px solid var(--panel-border); border-top:2px solid var(--amber); background:var(--bg-2); padding:1.7rem; display:flex; flex-direction:column; min-height:100%; }
+  .edu-card__top{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
   .edu-card__tag{ font-family:var(--mono); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--amber); }
-  .edu-card h3{ font-family:var(--display); font-size:1.1rem; margin-top:.5rem; }
-  .edu-card p.desc{ font-size:.86rem; font-weight:300; color:var(--text-dim); margin-top:.5rem; line-height:1.6; }
+  .edu-card__grade{ font-family:var(--mono); font-size:.6rem; letter-spacing:.1em; color:var(--text-dim); border:1px solid var(--panel-border); padding:.3rem .5rem; white-space:nowrap; }
+  .edu-card h3{ font-family:var(--display); font-size:1.2rem; margin-top:1rem; line-height:1.35; }
+  .edu-card__institution{ margin-top:.55rem; color:var(--steel); font-size:.9rem; line-height:1.55; }
+  .edu-card__meta{ display:flex; flex-wrap:wrap; gap:.5rem; margin:1rem 0 1.15rem; }
+  .edu-card__meta span{ font-family:var(--mono); font-size:.6rem; letter-spacing:.08em; color:var(--text-dim); border:1px solid var(--panel-border); padding:.3rem .5rem; }
+  .edu-card dl{ margin-top:auto; display:grid; gap:.85rem; }
+  .edu-card dl div{ display:grid; grid-template-columns:72px minmax(0,1fr); gap:.85rem; padding-top:.85rem; border-top:1px solid var(--panel-border); }
+  .edu-card dt{ font-family:var(--mono); font-size:.59rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+  .edu-card dd{ font-size:.84rem; font-weight:300; color:var(--text-dim); line-height:1.6; }
+  .education-path{ max-width:1180px; margin-top:2.2rem; display:grid; grid-template-columns:1fr auto 1fr auto 1fr; align-items:center; gap:1rem; }
+  .education-path span{ min-height:62px; display:grid; place-items:center; padding:.8rem 1rem; border:1px solid var(--panel-border); background:var(--bg-2); font-family:var(--mono); font-size:.66rem; line-height:1.5; letter-spacing:.1em; text-align:center; text-transform:uppercase; color:var(--text-dim); }
+  .education-path span:first-child{ border-top:2px solid var(--amber); }
+  .education-path span:nth-of-type(2){ border-top:2px solid var(--steel); }
+  .education-path span:last-child{ border-top:2px solid var(--cyan); color:var(--text); }
+  .education-path i{ color:var(--accent); font-family:var(--mono); font-style:normal; }
 
   .review{ background:var(--bg-2); padding-top:5rem; padding-bottom:5rem; }
   .review-grid{ max-width:1180px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.25rem; align-items:stretch; }
@@ -209,8 +218,7 @@
 
   @media (max-width:920px){
     .proj, .proj:nth-child(even of .proj){ grid-template-columns:1fr; }
-    .mirror-copy{ grid-template-columns:1fr; }
-    .knowledge__grid{ grid-template-columns:1fr; }
+    .skills{ grid-template-columns:repeat(2,minmax(0,1fr)); }
     .review-grid{ grid-template-columns:1fr; }
     .contact{ grid-template-columns:1fr; }
     .contact__links{ margin-top:1.5rem; }
@@ -264,7 +272,7 @@
     <p class="eyebrow"><span class="dot"></span>Munich, Germany</p>
     <h1 class="hero__name" aria-label="Ambaprasad Ganapathi Hegde"><span class="hero__name-desktop" aria-hidden="true">Ambaprasad&nbsp;Ganapathi<br>Hegde</span><span class="hero__name-mobile" aria-hidden="true">Ambaprasad<br>Ganapathi Hegde</span></h1>
     <p class="hero__title"><span class="hero__title-line">Specialist in Digitalisation &amp; Automation</span><span class="hero__title-line hero__title-specialty">Virtual Commissioning</span></p>
-    <p class="hero__tagline">I’m the engineer behind <span class="hl">patent pending PLC test automation</span> that reduced testing costs by <span class="hl">22%</span> and testing cycles by <span class="hl">28%</span>. I am now focused on building <span class="hl">production-grade AI workflows for industrial engineering and automation</span>.</p>
+    <p class="hero__tagline">I’m the engineer behind <span class="hl">patent-pending PLC test automation</span> that reduced testing costs by <span class="hl">22%</span> and testing cycles by <span class="hl">28%</span>. I help build <span class="hl">production-grade software and AI/LLM workflows</span> that work reliably across multidisciplinary engineering data in industrial automation.</p>
     <nav class="hero__actions" aria-label="Portfolio shortcuts">
       <a class="btn btn--accent" href="#work">View projects</a>
       <a class="btn" href="#experience">View experience</a>
@@ -288,22 +296,50 @@
   .deploy-note .hl{ color:var(--text); font-weight:400; }
   @keyframes sitehalo{ 0%{opacity:.7;} 70%{opacity:0;} 100%{opacity:0;} }
 
-  .station{ border:1px solid var(--panel-border); background:var(--bg); margin-bottom:1.2rem; }
-  .station__head{ display:flex; align-items:center; gap:1rem; padding:1.2rem 1.5rem; user-select:none; }
-  .station__num{ font-family:var(--mono); font-size:.62rem; letter-spacing:.14em; color:var(--accent); border:1px solid var(--accent); padding:.3rem .55rem; flex:none; transition:color .3s, border-color .3s; }
-  .station__role{ font-family:var(--display); font-size:1.08rem; flex:1; }
-  .station__role span{ font-family:var(--mono); font-size:.78rem; color:var(--steel); font-weight:400; }
-  .station__dates{ font-family:var(--mono); font-size:.62rem; letter-spacing:.1em; color:var(--text-dim); }
-  .station__chev{ font-family:var(--mono); color:var(--text-dim); transition:transform .3s; }
-  .station.open .station__chev{ transform:rotate(90deg); }
-  .station__body{ display:none; padding:0 1.5rem 1.5rem; }
-  .station.open .station__body{ display:block; }
-  .sfield .sf-k{ font-family:var(--mono); font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.45rem; transition:color .3s; }
-  .sfield .sf-v{ font-size:.8rem; font-weight:300; color:var(--text-dim); line-height:1.6; }
-  .sfield .todo{ color:#5f6b78; font-style:italic; }
-  .belt-rail{ height:8px; background:repeating-linear-gradient(90deg, #1b222c 0 26px, #232c37 26px 30px); border:1px solid var(--panel-border); margin:.2rem 0 1.4rem; position:relative; overflow:hidden; }
-  .belt-rail .pallet{ position:absolute; top:1px; width:14px; height:4px; background:var(--accent); animation:palletmove 9s linear infinite; }
-  @keyframes palletmove{ 0%{left:-4%;} 100%{left:102%;} }
+  .career-intro{ max-width:760px; margin:-1.25rem 0 2.5rem; color:var(--text-dim); font-size:.98rem; font-weight:300; line-height:1.75; }
+  .career-timeline{ position:relative; max-width:1180px; display:grid; gap:1.25rem; }
+  .career-timeline::before{ content:''; position:absolute; top:1.35rem; bottom:1.35rem; left:174px; width:1px; background:linear-gradient(var(--accent),var(--panel-border) 20%,var(--panel-border) 80%,var(--amber)); }
+  .career-entry{ position:relative; display:grid; grid-template-columns:145px minmax(0,1fr); gap:58px; align-items:start; }
+  .career-date{ padding-top:1.45rem; font-family:var(--mono); font-size:.64rem; line-height:1.55; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); text-align:right; }
+  .career-date strong{ display:block; color:var(--text); font-weight:500; }
+  .career-node{ position:absolute; left:168px; top:1.55rem; z-index:2; width:13px; height:13px; border:2px solid var(--accent); border-radius:50%; background:var(--bg-2); box-shadow:0 0 0 5px var(--bg-2); }
+  .career-entry:last-child .career-node{ border-color:var(--amber); }
+  .career-card{ border:1px solid var(--panel-border); background:var(--bg); padding:1.45rem 1.55rem; min-width:0; }
+  .career-card--featured{ border-top:2px solid var(--accent); background:linear-gradient(145deg,rgba(94,230,208,.045),transparent 34%),var(--bg); padding:1.7rem; }
+  .career-card__header{ display:flex; align-items:center; gap:.95rem; }
+  .st-badge{ width:34px; height:34px; flex:none; border:1px solid var(--panel-border); background:var(--bg-2); padding:4px; box-sizing:content-box; }
+  .career-company{ font-family:var(--display); font-size:1.2rem; line-height:1.25; }
+  .career-context{ margin-top:.22rem; font-family:var(--mono); font-size:.61rem; line-height:1.5; letter-spacing:.1em; text-transform:uppercase; color:var(--steel); }
+  .career-current{ margin-left:auto; flex:none; border:1px solid var(--accent); padding:.28rem .5rem; font-family:var(--mono); font-size:.56rem; letter-spacing:.12em; color:var(--accent); }
+  .career-roles{ position:relative; margin:1.4rem 0 0 1.25rem; padding-left:1.75rem; display:grid; gap:1.25rem; }
+  .career-roles::before{ content:''; position:absolute; left:2px; top:.5rem; bottom:.5rem; width:1px; background:var(--panel-border); }
+  .career-role{ position:relative; }
+  .career-role::before{ content:''; position:absolute; left:-1.98rem; top:.45rem; width:7px; height:7px; border-radius:50%; background:var(--bg); border:1px solid var(--accent); }
+  .career-role__meta{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; }
+  .career-role h3{ font-family:var(--display); font-size:1.03rem; line-height:1.4; }
+  .career-role__date{ flex:none; font-family:var(--mono); font-size:.58rem; letter-spacing:.08em; color:var(--text-dim); }
+  .career-role__copy{ max-width:82ch; margin-top:.38rem; color:var(--text-dim); font-size:.85rem; font-weight:300; line-height:1.65; }
+  .career-impact{ margin-top:1.45rem; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border:1px solid var(--panel-border); border-left:3px solid var(--green); }
+  .career-impact div{ padding:.8rem 1rem; min-width:0; }
+  .career-impact div+div{ border-left:1px solid var(--panel-border); }
+  .career-impact strong{ display:block; font-family:var(--display); font-size:1.08rem; color:var(--green); }
+  .career-impact span{ display:block; margin-top:.18rem; font-family:var(--mono); font-size:.55rem; line-height:1.45; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); }
+  .career-theme{ margin-top:1rem; font-family:var(--mono); font-size:.58rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+  .career-card h3.career-title{ margin-top:.35rem; font-family:var(--display); font-size:1.08rem; }
+  .career-copy{ max-width:82ch; margin-top:.55rem; color:var(--text-dim); font-size:.87rem; font-weight:300; line-height:1.7; }
+
+  @media (max-width:820px){
+    .career-timeline::before{ left:7px; }
+    .career-entry{ grid-template-columns:1fr; gap:.55rem; padding-left:31px; }
+    .career-date{ padding-top:0; text-align:left; }
+    .career-date strong{ display:inline; margin-right:.4rem; }
+    .career-node{ left:1px; top:.2rem; box-shadow:0 0 0 5px var(--bg-2); }
+    .career-card--featured, .career-card{ padding:1.25rem; }
+    .career-role__meta{ display:block; }
+    .career-role__date{ display:block; margin-top:.2rem; }
+    .career-impact{ grid-template-columns:1fr; }
+    .career-impact div+div{ border-left:0; border-top:1px solid var(--panel-border); }
+  }
 
   .tabs{ display:flex; gap:.4rem; margin-bottom:1.1rem; }
   .tab-btn{ font-family:var(--mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; background:transparent; color:var(--text-dim); border:1px solid var(--panel-border); padding:.42rem .7rem; }
@@ -368,32 +404,12 @@
   body.eng-mode section *, body.eng-mode .proj *{ outline:1px dashed rgba(94,230,208,.16); }
   .eggs{ margin-top:4rem; font-family:var(--mono); font-size:.68rem; color:var(--text-dim); letter-spacing:.06em; line-height:2; max-width:560px; }
   .eggs summary{ color:var(--accent); cursor:pointer; letter-spacing:.12em; text-transform:uppercase; font-size:.64rem; transition:color .3s; }
-  .sfield .sf-v{ text-align:justify; hyphens:auto; -webkit-hyphens:auto; }
   .changelog-mini{ margin-top:1.6rem; max-width:880px; font-family:var(--mono); font-size:.68rem; color:var(--text-dim); letter-spacing:.05em; line-height:2; border:1px dashed var(--panel-border); padding:.8rem 1.1rem; }
   .changelog-mini summary{ color:var(--text-dim); cursor:pointer; letter-spacing:.12em; font-size:.62rem; text-transform:uppercase; }
   .changelog-mini .ver{ color:var(--accent); margin-right:.4rem; transition:color .3s; }
   .changelog-mini .cur{ color:var(--green); border:1px solid var(--green); padding:.02rem .35rem; font-size:.56rem; margin:0 .5rem 0 .35rem; }
   #alerts{ position:fixed; right:1.6rem; top:5.4rem; z-index:180; display:flex; flex-direction:column; gap:.6rem; max-width:340px; align-items:flex-end; }
   #alerts .toast{ width:100%; }
-  /* --- industrial timeline overhaul --- */
-  .st-badge{ width:30px; height:30px; flex:none; border:1px solid var(--panel-border); background:var(--bg-2); padding:3px; box-sizing:content-box; }
-  .st-grid{ display:grid; grid-template-columns:1.15fr 1.15fr .9fr; gap:1rem; }
-  .station .sfield{ border:1px solid var(--panel-border); background:var(--bg-2); padding:1rem 1.1rem 1.1rem; border-top:2px solid var(--panel-border); min-height:100%; }
-  .sfield--problem{ border-top-color:var(--red); }
-  .sfield--built{ border-top-color:var(--accent); }
-  .sfield--tools{ border-top-color:var(--steel); }
-  .station .sf-k{ display:flex; align-items:center; gap:.45rem; }
-  .station .sf-k::before{ content:'▸'; font-size:.7rem; }
-  .sfield--problem .sf-k{ color:var(--red); }
-  .sfield--built .sf-k{ color:var(--accent); }
-  .sfield--tools .sf-k{ color:var(--steel); }
-  .st-impact{ margin-top:1rem; border:1px solid var(--panel-border); border-left:3px solid var(--green); background:var(--bg-2); padding:.85rem 1.1rem; display:flex; gap:.9rem; align-items:baseline; flex-wrap:wrap; }
-  .st-impact .imp-k{ font-family:var(--mono); font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--green); flex:none; }
-  .st-impact .imp-v{ font-size:.84rem; font-weight:300; color:var(--text); line-height:1.6; }
-  .st-learned{ margin-top:.8rem; font-family:var(--mono); font-size:.74rem; color:var(--accent); line-height:1.7; transition:color .3s; }
-  .st-learned::before{ content:'> LEARNED: '; color:var(--text-dim); letter-spacing:.1em; }
-  .st-learned.todo{ color:#5f6b78; font-style:italic; }
-  @media (max-width:980px){ .st-grid{ grid-template-columns:1fr; } }
   #mode-toggle .fs-btn{ margin-left:.5rem; padding-left:.7rem; border-left:1px solid var(--panel-border); color:var(--text-dim); font-size:.95rem; line-height:1; transition:color .2s; }
   #mode-toggle .fs-btn:hover{ color:var(--accent); }
   .fs-exit{ display:none; position:absolute; top:1.3rem; right:1.6rem; z-index:141; font-family:var(--mono); font-size:.62rem; letter-spacing:.14em;
@@ -469,9 +485,7 @@
     #a-twin .proj__viz::before{ display:none; }
     #twin-svg{ width:100%; min-width:0; align-self:flex-start; touch-action:auto; }
     .twin-project{ min-height:190px; }
-    .deploy-note, .proj__info p, .sfield .sf-v{ text-align:left; text-justify:auto; hyphens:none; -webkit-hyphens:none; }
-    .mirror-copy{ gap:1rem; margin-top:2rem; }
-    .mirror-box{ padding:1.3rem; }
+    .deploy-note, .proj__info p{ text-align:left; text-justify:auto; hyphens:none; -webkit-hyphens:none; }
     .log-line{ margin-top:2rem; padding-left:1rem; font-size:.78rem; line-height:1.7; }
 
     .changelog-mini{ padding:.75rem; font-size:.62rem; line-height:1.75; }
@@ -485,32 +499,23 @@
     .site{ padding:.85rem 1rem; }
     .deploy-note{ margin-top:1.3rem; font-size:.88rem; line-height:1.7; }
 
-    .station{ margin-bottom:.85rem; }
-    .station__head{
-      min-height:72px;
-      padding:.85rem;
-      display:grid;
-      grid-template-columns:38px auto 1fr auto;
-      grid-template-rows:auto auto;
-      gap:.5rem .65rem;
-      align-items:center;
-    }
-    .st-badge{ grid-column:1; grid-row:1/3; }
-    .station__num{ grid-column:2; grid-row:1; font-size:.55rem; }
-    .station__dates{ grid-column:3; grid-row:1; justify-self:end; font-size:.54rem; white-space:nowrap; }
-    .station__chev{ grid-column:4; grid-row:1; }
-    .station__role{ grid-column:2/5; grid-row:2; font-size:.95rem; line-height:1.35; }
-    .station__role span{ display:block; margin-top:.15rem; font-size:.68rem; }
-    .station__body{ padding:0 .85rem .85rem; }
-    .st-grid{ gap:.65rem; }
-    .station .sfield{ padding:.85rem; }
-    .st-impact{ padding:.75rem .85rem; gap:.45rem; }
-    .st-impact .imp-k, .st-impact .imp-v{ width:100%; }
-    .st-learned{ font-size:.66rem; }
+    .career-intro{ margin-top:-.75rem; margin-bottom:2rem; font-size:.88rem; }
+    .career-card__header{ align-items:flex-start; }
+    .career-company{ font-size:1.05rem; }
+    .career-current{ margin-left:0; }
+    .career-roles{ margin-left:.65rem; padding-left:1.4rem; }
+    .career-role::before{ left:-1.62rem; }
 
-    .knowledge__grid{ gap:2rem; }
-    .skills__group{ margin-bottom:1.25rem; }
-    .edu-card{ padding:1.2rem; margin-bottom:1rem; }
+    .skills{ grid-template-columns:1fr; gap:1.35rem; }
+    .education{ margin-top:2.5rem; padding-top:1.5rem; }
+    .education__heading{ display:block; }
+    .education__heading p:last-child{ margin-top:.65rem; text-align:left; }
+    .education__grid{ grid-template-columns:1fr; gap:1rem; }
+    .edu-card{ padding:1.2rem; }
+    .edu-card__top{ align-items:flex-start; }
+    .edu-card dl div{ grid-template-columns:1fr; gap:.35rem; }
+    .education-path{ grid-template-columns:1fr; gap:.55rem; }
+    .education-path i{ transform:rotate(90deg); text-align:center; }
     .tag{ font-size:.65rem; }
 
     .proj, .proj:nth-child(even of .proj){ margin-bottom:2rem; padding:1rem; gap:1.4rem; }
@@ -595,7 +600,7 @@
          (max-width:920px) and (max-height:600px) and (pointer:coarse) and (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
     .reveal{ opacity:1; transform:none; transition:none; }
-    .dot, .belt-rail .pallet, #viz-synth .sv-flow{ animation:none; }
+    .dot, #viz-synth .sv-flow{ animation:none; }
   }
 </style>
 
@@ -620,81 +625,81 @@
 
 <section class="experience" id="experience">
   <p class="eyebrow reveal">// Experience</p>
-  <h2 class="section-title reveal">Industrial timeline</h2>
-  <div class="belt-rail reveal"><div class="pallet"></div><div class="pallet" style="animation-delay:-4.5s;"></div></div>
-  <div id="stations">
-    <div class="station reveal open">
-      <div class="station__head"><svg class="st-badge" viewBox="0 0 30 30" aria-label="BMW"><circle cx="15" cy="15" r="13" fill="none" stroke="#8b95a1" stroke-width="1.6"/><path d="M15 4 A11 11 0 0 1 26 15 L15 15 Z" fill="#5b8fd6" opacity=".85"/><path d="M15 26 A11 11 0 0 1 4 15 L15 15 Z" fill="#5b8fd6" opacity=".85"/><path d="M26 15 A11 11 0 0 1 15 26 L15 15 Z" fill="#dfe6ec" opacity=".85"/><path d="M4 15 A11 11 0 0 1 15 4 L15 15 Z" fill="#dfe6ec" opacity=".85"/></svg><span class="station__num">STN 06</span><p class="station__role">Specialist, Virtual Commissioning &amp; Digitalization <span>· BMW (via Brunel GmbH)</span></p><span class="station__dates">01/2025 — PRESENT</span><span class="station__chev">▸</span></div>
-      <div class="station__body">
-        <div class="st-grid">
-          <div class="sfield sfield--problem"><p class="sf-k">Problem</p><p class="sf-v">PLC validation was manual, expert-bound, and expensive — repeated for every PLC on every line.</p></div>
-          <div class="sfield sfield--built"><p class="sf-k">What I built</p><p class="sf-v">Productized the automated VC validation suite (patent-pending) and rolled it out across international sites; added AI workflows for collision checks and change analysis.</p></div>
-          <div class="sfield sfield--tools"><p class="sf-k">Tools</p><div class="skills__tags"><span class="tag">fe.screen-sim</span><span class="tag">TIA Portal</span><span class="tag">C#/.NET</span><span class="tag">Python</span><span class="tag">MCP</span><span class="tag">OPC UA</span></div></div>
+  <h2 class="section-title reveal">Engineering trajectory</h2>
+  <p class="career-intro reveal">A latest-first view of how hands-on engineering developed into systems thinking, virtual commissioning, production software and industrial AI.</p>
+  <div class="career-timeline">
+    <article class="career-entry reveal">
+      <p class="career-date"><strong>2024 — Present</strong> BMW</p>
+      <span class="career-node" aria-hidden="true"></span>
+      <div class="career-card career-card--featured">
+        <header class="career-card__header">
+          <svg class="st-badge" viewBox="0 0 30 30" role="img" aria-label="BMW"><circle cx="15" cy="15" r="13" fill="none" stroke="#8b95a1" stroke-width="1.6"/><path d="M15 4 A11 11 0 0 1 26 15 L15 15 Z" fill="#5b8fd6" opacity=".85"/><path d="M15 26 A11 11 0 0 1 4 15 L15 15 Z" fill="#5b8fd6" opacity=".85"/><path d="M26 15 A11 11 0 0 1 15 26 L15 15 Z" fill="#dfe6ec" opacity=".85"/><path d="M4 15 A11 11 0 0 1 15 4 L15 15 Z" fill="#dfe6ec" opacity=".85"/></svg>
+          <div><p class="career-company">BMW Group</p><p class="career-context">Virtual commissioning · Digitalization · Gen6 battery production</p></div>
+          <span class="career-current">CURRENT</span>
+        </header>
+        <div class="career-roles">
+          <div class="career-role">
+            <div class="career-role__meta"><h3>Specialist, Virtual Commissioning &amp; Digitalization</h3><span class="career-role__date">01/2025 — PRESENT · VIA BRUNEL</span></div>
+            <p class="career-role__copy">Productized and scaled automated PLC validation across international Gen6 battery programs, while extending the engineering workflow with collision and change-analysis AI.</p>
+          </div>
+          <div class="career-role">
+            <div class="career-role__meta"><h3>Master’s Thesis Student</h3><span class="career-role__date">07/2024 — 12/2024</span></div>
+            <p class="career-role__copy">Designed the reusable architecture: component-level test definitions connected to real PLC control data and virtual production models.</p>
+          </div>
+          <div class="career-role">
+            <div class="career-role__meta"><h3>Virtual Commissioning Intern</h3><span class="career-role__date">01/2024 — 07/2024</span></div>
+            <p class="career-role__copy">Established the foundation through engineering-data validation, test KPI visibility and digital-laboratory infrastructure.</p>
+          </div>
         </div>
-        <div class="st-impact"><span class="imp-k">Impact</span><span class="imp-v">−22% testing cost per PLC · −28% testing cycle time · standardized knowledge reuse across Gen6 battery sites.</span></div>
-        <p class="st-learned">Turning a prototype into a product is 20% code, 80% requirements, architecture and rollout.</p>
-      </div>
-    </div>
-    <div class="station reveal">
-      <div class="station__head"><svg class="st-badge" viewBox="0 0 30 30" aria-label="BMW"><circle cx="15" cy="15" r="13" fill="none" stroke="#8b95a1" stroke-width="1.6"/><path d="M15 4 A11 11 0 0 1 26 15 L15 15 Z" fill="#5b8fd6" opacity=".85"/><path d="M15 26 A11 11 0 0 1 4 15 L15 15 Z" fill="#5b8fd6" opacity=".85"/><path d="M26 15 A11 11 0 0 1 15 26 L15 15 Z" fill="#dfe6ec" opacity=".85"/><path d="M4 15 A11 11 0 0 1 15 4 L15 15 Z" fill="#dfe6ec" opacity=".85"/></svg><span class="station__num">STN 05</span><p class="station__role">Master's Thesis Student <span>· BMW</span></p><span class="station__dates">07/2024 — 12/2024</span><span class="station__chev">▸</span></div>
-      <div class="station__body">
-        <div class="st-grid">
-          <div class="sfield sfield--problem"><p class="sf-k">Problem</p><p class="sf-v">Test knowledge lived in experts' heads; every PLC was tested from scratch.</p></div>
-          <div class="sfield sfield--built"><p class="sf-k">What I built</p><p class="sf-v">A component-based automation framework for PLC testing in a VC environment — abstract test cases populated with real control data.</p></div>
-          <div class="sfield sfield--tools"><p class="sf-k">Tools</p><div class="skills__tags"><span class="tag">UML</span><span class="tag">Asset Admin Shells</span><span class="tag">OPC UA</span><span class="tag">MBSE</span></div></div>
+        <div class="career-impact" aria-label="BMW impact">
+          <div><strong>−22%</strong><span>Testing cost per PLC</span></div>
+          <div><strong>−28%</strong><span>Testing cycle time</span></div>
+          <div><strong>International</strong><span>Gen6 deployment scope</span></div>
         </div>
-        <div class="st-impact"><span class="imp-k">Impact</span><span class="imp-v">Working prototype proved feasibility and scalability — became the foundation of the patented product.</span></div>
-        <p class="st-learned">The right abstraction is leverage: write a test once, run it on every PLC.</p>
       </div>
-    </div>
-    <div class="station reveal">
-      <div class="station__head"><svg class="st-badge" viewBox="0 0 30 30" aria-label="BMW"><circle cx="15" cy="15" r="13" fill="none" stroke="#8b95a1" stroke-width="1.6"/><path d="M15 4 A11 11 0 0 1 26 15 L15 15 Z" fill="#5b8fd6" opacity=".85"/><path d="M15 26 A11 11 0 0 1 4 15 L15 15 Z" fill="#5b8fd6" opacity=".85"/><path d="M26 15 A11 11 0 0 1 15 26 L15 15 Z" fill="#dfe6ec" opacity=".85"/><path d="M4 15 A11 11 0 0 1 15 4 L15 15 Z" fill="#dfe6ec" opacity=".85"/></svg><span class="station__num">STN 04</span><p class="station__role">Intern, Virtual Commissioning <span>· BMW</span></p><span class="station__dates">01/2024 — 07/2024</span><span class="station__chev">▸</span></div>
-      <div class="station__body">
-        <div class="st-grid">
-          <div class="sfield sfield--problem"><p class="sf-k">Problem</p><p class="sf-v">Engineering data (PLC code vs control data) was inconsistent; testing progress was invisible.</p></div>
-          <div class="sfield sfield--built"><p class="sf-k">What I built</p><p class="sf-v">A validation tool for code/data inconsistencies, a KPI monitoring system for test activities, and the digital lab network architecture.</p></div>
-          <div class="sfield sfield--tools"><p class="sf-k">Tools</p><div class="skills__tags"><span class="tag">C#</span><span class="tag">S7-1500</span><span class="tag">Virtual robots</span><span class="tag">Simulation models</span></div></div>
-        </div>
-        <div class="st-impact"><span class="imp-k">Impact</span><span class="imp-v">Reliable engineering data for simulation and commissioning; visibility into validation readiness.</span></div>
-        <p class="st-learned">Catching a data mismatch here costs minutes; catching it mid test-cycle costs hours — the validation tool paid for itself in the first week.</p>
+    </article>
+
+    <article class="career-entry reveal">
+      <p class="career-date"><strong>03/2023 — 08/2023</strong> Magdeburg</p>
+      <span class="career-node" aria-hidden="true"></span>
+      <div class="career-card">
+        <header class="career-card__header">
+          <svg class="st-badge" viewBox="0 0 30 30" role="img" aria-label="OVGU"><rect x="2" y="2" width="26" height="26" fill="none" stroke="#8b95a1" stroke-width="1.4"/><rect x="2" y="2" width="26" height="8" fill="#c22f5e" opacity=".8"/><text x="15" y="23" fill="#c7ccd1" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle" font-weight="bold">OvGU</text></svg>
+          <div><p class="career-company">OVGU Magdeburg</p><p class="career-context">Research · Digital twin</p></div>
+        </header>
+        <p class="career-theme">Connected systems</p>
+        <h3 class="career-title">Research Assistant</h3>
+        <p class="career-copy">Built a bidirectional digital twin of a miniature production line, connecting Plant Simulation, OPC UA and a web-based control and KPI layer.</p>
       </div>
-    </div>
-    <div class="station reveal">
-      <div class="station__head"><svg class="st-badge" viewBox="0 0 30 30" aria-label="OVGU"><rect x="2" y="2" width="26" height="26" fill="none" stroke="#8b95a1" stroke-width="1.4"/><rect x="2" y="2" width="26" height="8" fill="#c22f5e" opacity=".8"/><text x="15" y="23" fill="#c7ccd1" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle" font-weight="bold">OvGU</text></svg><span class="station__num">STN 03</span><p class="station__role">Research Assistant <span>· OVGU Magdeburg</span></p><span class="station__dates">03/2023 — 08/2023</span><span class="station__chev">▸</span></div>
-      <div class="station__body">
-        <div class="st-grid">
-          <div class="sfield sfield--problem"><p class="sf-k">Problem</p><p class="sf-v">The lab's miniature production line had no live digital counterpart for research and teaching.</p></div>
-          <div class="sfield sfield--built"><p class="sf-k">What I built</p><p class="sf-v">A two-way digital twin in Tecnomatix Plant Simulation over OPC UA, plus a web KPI dashboard with dual-channel control.</p></div>
-          <div class="sfield sfield--tools"><p class="sf-k">Tools</p><div class="skills__tags"><span class="tag">Tecnomatix</span><span class="tag">OPC UA</span><span class="tag">Web dashboard</span></div></div>
-        </div>
-        <div class="st-impact"><span class="imp-k">Impact</span><span class="imp-v">Real-time bidirectional control and monitoring — now shown as the live model in Project 07.</span></div>
-        <p class="st-learned">Sync latency is the truth-teller of any digital twin.</p>
+    </article>
+
+    <article class="career-entry reveal">
+      <p class="career-date"><strong>12/2020 — 09/2022</strong> HCL</p>
+      <span class="career-node" aria-hidden="true"></span>
+      <div class="career-card">
+        <header class="career-card__header">
+          <svg class="st-badge" viewBox="0 0 30 30" role="img" aria-label="HCL"><rect x="2" y="2" width="26" height="26" fill="none" stroke="#8b95a1" stroke-width="1.4"/><text x="15" y="19" fill="#5b8fd6" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle" font-weight="bold">HCL</text></svg>
+          <div><p class="career-company">HCL Technologies</p><p class="career-context">Project engineering · Controlled processes</p></div>
+        </header>
+        <p class="career-theme">Engineering delivery</p>
+        <h3 class="career-title">Project Engineer</h3>
+        <p class="career-copy">Coordinated controlled engineering work across customer, quality and technical teams, building the process discipline required for reliable interdisciplinary delivery.</p>
       </div>
-    </div>
-    <div class="station reveal">
-      <div class="station__head"><svg class="st-badge" viewBox="0 0 30 30" aria-label="HCL"><rect x="2" y="2" width="26" height="26" fill="none" stroke="#8b95a1" stroke-width="1.4"/><text x="15" y="19" fill="#5b8fd6" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle" font-weight="bold">HCL</text></svg><span class="station__num">STN 02</span><p class="station__role">Project Engineer <span>· HCL</span></p><span class="station__dates">12/2020 — 09/2022</span><span class="station__chev">▸</span></div>
-      <div class="station__body">
-        <div class="st-grid">
-          <div class="sfield sfield--problem"><p class="sf-k">Problem</p><p class="sf-v">Medical-device development demands controlled processes across engineering, quality and regulatory functions.</p></div>
-          <div class="sfield sfield--built"><p class="sf-k">What I built</p><p class="sf-v">End-to-end change management, resource planning, and customer-specific Standard Operating Procedures.</p></div>
-          <div class="sfield sfield--tools"><p class="sf-k">Tools</p><div class="skills__tags"><span class="tag">Agile PM</span><span class="tag">Controlled processes</span></div></div>
-        </div>
-        <div class="st-impact"><span class="imp-k">Impact</span><span class="imp-v">On-time, compliant delivery of engineering work packages.</span></div>
-        <p class="st-learned">Process discipline is what lets interdisciplinary teams scale.</p>
+    </article>
+
+    <article class="career-entry reveal">
+      <p class="career-date"><strong>01/2020 — 06/2020</strong> Coca-Cola</p>
+      <span class="career-node" aria-hidden="true"></span>
+      <div class="career-card">
+        <header class="career-card__header">
+          <svg class="st-badge" viewBox="0 0 30 30" role="img" aria-label="Coca-Cola"><circle cx="15" cy="15" r="13" fill="#a83232" opacity=".85"/><path d="M5 17 Q11 12 15 16 T25 15" stroke="#f4e9e0" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          <div><p class="career-company">Coca-Cola</p><p class="career-context">Plant operations · Process improvement</p></div>
+        </header>
+        <p class="career-theme">Physical operations</p>
+        <h3 class="career-title">Intern Engineer</h3>
+        <p class="career-copy">Used shop-floor observation, process mapping and bottleneck analysis to improve loading-area logistics, reducing plant-wide truck turnaround time by 10%.</p>
       </div>
-    </div>
-    <div class="station reveal">
-      <div class="station__head"><svg class="st-badge" viewBox="0 0 30 30" aria-label="Coca-Cola"><circle cx="15" cy="15" r="13" fill="#a83232" opacity=".85"/><path d="M5 17 Q11 12 15 16 T25 15" stroke="#f4e9e0" stroke-width="2" fill="none" stroke-linecap="round"/></svg><span class="station__num">STN 01</span><p class="station__role">Intern Engineer <span>· Coca-Cola</span></p><span class="station__dates">01/2020 — 06/2020</span><span class="station__chev">▸</span></div>
-      <div class="station__body">
-        <div class="st-grid">
-          <div class="sfield sfield--problem"><p class="sf-k">Problem</p><p class="sf-v">Truck turnaround time in the loading area was a plant-wide bottleneck.</p></div>
-          <div class="sfield sfield--built"><p class="sf-k">What I built</p><p class="sf-v">Targeted logistics process improvements from bottleneck analysis in the loading area.</p></div>
-          <div class="sfield sfield--tools"><p class="sf-k">Tools</p><div class="skills__tags"><span class="tag">Bottleneck analysis</span><span class="tag">Process mapping</span></div></div>
-        </div>
-        <div class="st-impact"><span class="imp-k">Impact</span><span class="imp-v">−10% turnaround time across the entire plant.</span></div>
-        <p class="st-learned">Watch the floor, not the report.</p>
-      </div>
-    </div>
+    </article>
   </div>
 </section>
 
@@ -711,28 +716,35 @@
       <div class="skills__group"><p class="skills__label">Business Tools &amp; Languages</p><div class="skills__tags"><span class="tag">Siemens Teamcenter</span><span class="tag">SAP ERP</span><span class="tag">English C1</span><span class="tag">German B1</span></div></div>
     </div>
     <div class="education reveal">
-      <div class="edu-card"><p class="edu-card__tag">DEGREE 01 · GERMAN GRADE 1.9</p><h3>M.Sc. Systems Engineering for Manufacturing</h3><p class="desc">Otto von Guericke University Magdeburg · 10/2022 – 12/2024. Thesis: component-based automation framework for PLC testing in virtual commissioning (→ Project 01).</p></div>
-      <div class="edu-card"><p class="edu-card__tag">DEGREE 02 · GERMAN GRADE 2.0</p><h3>B.Eng. Mechanical Engineering</h3><p class="desc">Visvesvaraya Technological University · 08/2016 – 08/2020. Electric vehicle for agricultural applications; 4-axis robot for high-risk manufacturing environments.</p></div>
+      <div class="education__heading"><p class="skills__label">Education</p><p>Two complementary foundations: physical product engineering and systems-level manufacturing automation.</p></div>
+      <div class="education__grid">
+        <article class="edu-card">
+          <div class="edu-card__top"><p class="edu-card__tag">Degree 01</p><span class="edu-card__grade">German grade 1.9</span></div>
+          <h3>M.Sc. Systems Engineering for Manufacturing</h3>
+          <p class="edu-card__institution">Otto von Guericke University Magdeburg</p>
+          <div class="edu-card__meta"><span>10/2022 — 12/2024</span><span>Magdeburg, Germany</span></div>
+          <dl>
+            <div><dt>Focus</dt><dd>Systems integration, industrial automation and virtual commissioning.</dd></div>
+            <div><dt>Thesis</dt><dd>Component-based automation framework for PLC testing in virtual commissioning.</dd></div>
+          </dl>
+        </article>
+        <article class="edu-card">
+          <div class="edu-card__top"><p class="edu-card__tag">Degree 02</p><span class="edu-card__grade">German-equivalent 2.0</span></div>
+          <h3>B.Eng. Mechanical Engineering</h3>
+          <p class="edu-card__institution">Visvesvaraya Technological University</p>
+          <div class="edu-card__meta"><span>08/2016 — 08/2020</span><span>Karnataka, India</span></div>
+          <dl>
+            <div><dt>Focus</dt><dd>Mechanical design, robotics and product development.</dd></div>
+            <div><dt>Projects</dt><dd>Agricultural electric vehicle and four-axis robot for hazardous manufacturing environments.</dd></div>
+          </dl>
+        </article>
+      </div>
     </div>
   </div>
-  <div class="mirror-copy">
-    <div class="mirror-box phys reveal">
-      <p class="tag-label">Physical · v1.0</p>
-      <h3>Mechanical Engineer</h3>
-      <p>Trained on real hardware — vehicles, robots, production lines. A B.Eng. in Mechanical Engineering and early roles at a rail wheel factory and Coca-Cola built the instinct for how physical systems actually behave on the floor.</p>
-    </div>
-    <div class="mirror-box mid reveal">
-      <p class="tag-label">Bridge · v1.5</p>
-      <h3>Project Engineer</h3>
-      <p>Where hardware started meeting process discipline — delivering engineering work packages across medical devices and semiconductors, where a single overlooked detail has real consequences. The instinct for controlled, validated processes started here.</p>
-    </div>
-    <div class="mirror-box virt reveal">
-      <p class="tag-label">Digital Twin · v2.0</p>
-      <h3>Systems &amp; Simulation Engineer</h3>
-      <p>An M.Sc. in Systems Engineering for Manufacturing and three years at BMW turned that instinct into software — PLC validation, virtual commissioning, and AI-assisted analysis that mirror the physical line before it's ever built.</p>
-    </div>
+  <div class="education-path reveal" aria-label="Engineering progression">
+    <span>Mechanical foundations</span><i aria-hidden="true">→</i><span>Systems &amp; automation</span><i aria-hidden="true">→</i><span>Industrial software &amp; AI</span>
   </div>
-  <p class="log-line reveal">&gt; Every production line exists twice — once in code, once in steel. I'm the engineer who makes sure both versions agree...</p>
+  <p class="log-line reveal">&gt; Combining physical-system understanding, automation engineering and software to build solutions grounded in how production systems actually operate...</p>
 </section>
 
 <section class="projects" id="work">
@@ -1380,7 +1392,7 @@
 (function(){
   const c=document.getElementById('cursor');
   document.addEventListener('mousemove',e=>{c.style.left=e.clientX+'px';c.style.top=e.clientY+'px';});
-  document.addEventListener('mouseover',e=>{c.classList.toggle('is-hover',!!e.target.closest('a,button,.station__head,.tab-btn,#mode-toggle,summary'));});
+  document.addEventListener('mouseover',e=>{c.classList.toggle('is-hover',!!e.target.closest('a,button,.tab-btn,#mode-toggle,summary'));});
 })();
 // ===== PROBE =====
 (function(){
@@ -1475,11 +1487,6 @@ document.querySelectorAll('.proj__info').forEach(info=>{
   });
   video.addEventListener('error',()=>frame.classList.add('is-unavailable'));
 })();
-// ===== STATIONS (timeline accordion) =====
-document.querySelectorAll('.station__head').forEach(h=>{
-  h.addEventListener('click',()=>h.parentElement.classList.toggle('open'));
-});
-
 // ===== 3D FACTORY HERO =====
 (function(){
   const canvas=document.getElementById('factory-canvas');
